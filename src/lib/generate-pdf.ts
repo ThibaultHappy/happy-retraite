@@ -4,10 +4,13 @@ import { storePDF } from "./pdf-store";
 export async function buildPDF(data: ReportData): Promise<{ buffer: Buffer; token: string; filename: string }> {
   const html = generateReportHTML(data);
 
-  const puppeteer = await import("puppeteer");
-  const browser = await puppeteer.default.launch({
+  const chromium = (await import("@sparticuz/chromium")).default;
+  const puppeteer = (await import("puppeteer-core")).default;
+
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
     headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
   const page = await browser.newPage();
