@@ -14,7 +14,8 @@
       "Bash(npm uninstall:*)",
       "Bash(npm list:*)",
       "Bash(which vercel:*)",
-      "Bash(/Users/macprodethibault/.npm-global/bin/vercel deploy:*)"
+      "Bash(/Users/macprodethibault/.npm-global/bin/vercel deploy:*)",
+      "Bash(sleep:*)"
     ]
   }
 }

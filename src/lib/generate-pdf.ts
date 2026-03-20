@@ -4,12 +4,14 @@ import { storePDF } from "./pdf-store";
 export async function buildPDF(data: ReportData): Promise<{ buffer: Buffer; token: string; filename: string }> {
   const html = generateReportHTML(data);
 
-  const chromium = (await import("@sparticuz/chromium")).default;
+  const chromium = (await import("@sparticuz/chromium-min")).default;
   const puppeteer = (await import("puppeteer-core")).default;
 
   const browser = await puppeteer.launch({
     args: chromium.args,
-    executablePath: await chromium.executablePath(),
+    executablePath: await chromium.executablePath(
+      "https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar"
+    ),
     headless: true,
   });
 
