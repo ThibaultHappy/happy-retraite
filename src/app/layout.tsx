@@ -17,8 +17,43 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "HappyRetraite — Votre diagnostic retraite gratuit en 2 minutes",
-  description: "Découvrez combien vous toucherez vraiment à la retraite et ce que vous pouvez encore faire pour améliorer ce montant. Diagnostic gratuit en 2 minutes.",
+  title: "Happy Retraite — Simulateur retraite personnalisé et rapport PDF",
+  description:
+    "Calculez votre pension retraite réelle en 2 minutes. Rapport personnalisé avec vos leviers d'optimisation. Salarié, indépendant, fonctionnaire.",
+  keywords:
+    "simulateur retraite, calcul retraite, optimiser retraite, PER, rachat trimestres",
+  metadataBase: new URL("https://www.happyretraite.fr"),
+  alternates: {
+    canonical: "https://www.happyretraite.fr",
+  },
+  openGraph: {
+    title: "Happy Retraite — Simulateur retraite personnalisé et rapport PDF",
+    description:
+      "Calculez votre pension retraite réelle en 2 minutes. Rapport personnalisé avec vos leviers d'optimisation.",
+    url: "https://www.happyretraite.fr",
+    type: "website",
+    siteName: "Happy Retraite",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Happy Retraite — Simulateur retraite personnalisé et rapport PDF",
+    description:
+      "Calculez votre pension retraite réelle en 2 minutes. Rapport personnalisé avec vos leviers d'optimisation.",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Happy Retraite",
+  description: "Simulateur retraite personnalisé",
+  url: "https://www.happyretraite.fr",
+  applicationCategory: "FinanceApplication",
+  offers: {
+    "@type": "Offer",
+    price: "29",
+    priceCurrency: "EUR",
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +63,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="antialiased">
-        {children}
-      </body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
