@@ -519,12 +519,14 @@ function ResultatsContent() {
 
       {/* Disclaimer */}
       <footer className="px-6 py-6" style={{ backgroundColor: "#0F1F3D", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-center leading-relaxed" style={{ color: "#4B6082" }}>
             Les estimations sont fournies à titre indicatif et ne constituent pas un conseil financier réglementé.
-            Elles sont basées sur des hypothèses simplifiées et peuvent différer de votre pension réelle.
-            Consultez un conseiller en gestion de patrimoine pour un bilan personnalisé.
           </p>
+          <div style={{ display: "flex", gap: "20px", fontSize: "12px", whiteSpace: "nowrap" }}>
+            <a href="mailto:bonjour@happyretraite.fr" style={{ color: "#4B6082", textDecoration: "none" }}>bonjour@happyretraite.fr</a>
+            <Link href="/contact" style={{ color: "#4B6082", textDecoration: "none" }}>Contact</Link>
+          </div>
         </div>
       </footer>
     </div>

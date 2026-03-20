@@ -46,20 +46,26 @@ export default function Home() {
       <nav style={{ backgroundColor: "#0F1F3D", padding: "0 24px" }}>
         <div className="max-w-6xl mx-auto flex items-center justify-between" style={{ minHeight: "72px" }}>
           <Link href="/"><Logo light /></Link>
-          <Link
-            href="/diagnostic"
-            style={{
-              backgroundColor: "#1D9E75",
-              color: "white",
-              padding: "10px 22px",
-              borderRadius: "999px",
-              fontSize: "14px",
-              fontWeight: 500,
-              textDecoration: "none",
-            }}
-          >
-            Commencer gratuitement
-          </Link>
+          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+            <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>
+              Contact
+            </Link>
+            <Link
+              href="/diagnostic"
+              style={{
+                backgroundColor: "#1D9E75",
+                color: "white",
+                padding: "10px 22px",
+                borderRadius: "999px",
+                fontSize: "14px",
+                fontWeight: 500,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Commencer gratuitement
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -558,9 +564,9 @@ export default function Home() {
             © 2026 Happy Retraite. Les estimations sont indicatives et ne constituent pas un conseil financier.
           </p>
           <div style={{ display: "flex", gap: "24px", fontSize: "13px", color: "#4B6082" }}>
+            <a href="mailto:bonjour@happyretraite.fr" style={{ color: "#4B6082", textDecoration: "none" }}>bonjour@happyretraite.fr</a>
             <a href="#" style={{ color: "#4B6082", textDecoration: "none" }}>Mentions légales</a>
-            <a href="#" style={{ color: "#4B6082", textDecoration: "none" }}>Confidentialité</a>
-            <a href="#" style={{ color: "#4B6082", textDecoration: "none" }}>Contact</a>
+            <Link href="/contact" style={{ color: "#4B6082", textDecoration: "none" }}>Contact</Link>
           </div>
         </div>
       </footer>
