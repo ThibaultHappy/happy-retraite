@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F7F9FC;
+  --foreground: #0F1F3D;
+
+  /* Vert */
+  --green: #1D9E75;
+  --green-dark: #0F6E56;
+  --green-darker: #085041;
+  --green-pale: #E8F5EF;
+  --green-light: #e1f5ee;
+  --green-mid: #c8ece1;
+  --green-inter: #9fe1cb;
+  --green-secondary: #5DCAA5;
+
+  /* Bleu nuit */
+  --navy: #0F1F3D;
+  --navy-mid: #1B2B4B;
+  --blue-secondary: #7A95BB;
+  --blue-muted: #4B6082;
+
+  /* Neutres */
+  --border: #E8EDF5;
+  --text-secondary: #6B7A99;
+  --card-bg: #FFFFFF;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+}
+
+/* Slider thumb styling */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1D9E75;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 1px 6px rgba(29, 158, 117, 0.4);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1D9E75;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 1px 6px rgba(29, 158, 117, 0.4);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-green: #1D9E75;
+  --color-green-dark: #0F6E56;
+  --color-green-darker: #085041;
+  --color-green-pale: #E8F5EF;
+  --color-navy: #0F1F3D;
+  --color-navy-mid: #1B2B4B;
+  --font-playfair: var(--font-playfair);
+  --font-dm-sans: var(--font-dm-sans);
+}
