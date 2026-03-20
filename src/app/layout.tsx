@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Playfair_Display, DM_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import PosthogProvider from "@/components/PosthogProvider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -69,7 +71,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <PosthogProvider>{children}</PosthogProvider>
+        <GoogleAnalytics gaId="G-0X7J3H7Q33" />
+      </body>
     </html>
   );
 }

@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense, useCallback } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FormData, DiagnosticResult } from "@/lib/retraite";
+import { posthog } from "@/lib/posthog";
 
 function fmtEuro(n: number) {
   return Math.abs(n).toLocaleString("fr-FR") + "€";
@@ -85,6 +86,11 @@ function ResultatsContent() {
 
   const handleCheckout = useCallback(async () => {
     if (!data) return;
+    posthog.capture("payment_initiated", {
+      pension_estimee: data.result.pensionEstimee,
+      gap_mensuel: data.result.gap,
+      statut: data.formData.statut,
+    });
     setCheckoutLoading(true);
     try {
       const { formData: f, result: r } = data;

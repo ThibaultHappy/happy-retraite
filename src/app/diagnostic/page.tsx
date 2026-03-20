@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { posthog } from "@/lib/posthog";
 import {
   FormData,
   defaultFormData,
@@ -1246,6 +1247,12 @@ export default function DiagnosticPage() {
   const [visible, setVisible] = useState(true);
 
   const steps = getStepSequence(formData);
+
+  // Track diagnostic started
+  useEffect(() => {
+    posthog.capture("diagnostic_started", { statut: formData.statut });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Ensure currentStep is always in the current sequence when statut changes
   useEffect(() => {
     if (!steps.includes(currentStep)) {
@@ -1272,6 +1279,9 @@ export default function DiagnosticPage() {
   function navigate(dir: "next" | "prev") {
     const newIdx = dir === "next" ? currentIndex + 1 : currentIndex - 1;
     if (newIdx < 0 || newIdx >= steps.length) return;
+    if (dir === "next") {
+      posthog.capture("step_completed", { step: currentStep, step_index: currentIndex, statut: formData.statut });
+    }
     setVisible(false);
     setTimeout(() => {
       setCurrentStep(steps[newIdx]);
@@ -1285,6 +1295,11 @@ export default function DiagnosticPage() {
     if (typeof window !== "undefined") {
       localStorage.setItem("happyRetraite_diagnostic", JSON.stringify({ formData, result }));
     }
+    posthog.capture("diagnostic_completed", {
+      statut: formData.statut,
+      pension_estimee: result.pensionEstimee,
+      gap_mensuel: result.gap,
+    });
     router.push("/resultats");
   }
 
