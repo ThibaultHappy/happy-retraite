@@ -47,6 +47,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex items-center justify-between" style={{ minHeight: "72px" }}>
           <Link href="/"><Logo light /></Link>
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+            <Link href="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>
+              Blog
+            </Link>
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>
               Contact
             </Link>
@@ -564,6 +567,7 @@ export default function Home() {
             © 2026 Happy Retraite. Les estimations sont indicatives et ne constituent pas un conseil financier.
           </p>
           <div style={{ display: "flex", gap: "24px", fontSize: "13px", color: "#4B6082" }}>
+            <Link href="/blog" style={{ color: "#4B6082", textDecoration: "none" }}>Blog</Link>
             <a href="mailto:bonjour@happyretraite.fr" style={{ color: "#4B6082", textDecoration: "none" }}>bonjour@happyretraite.fr</a>
             <Link href="/mentions-legales" style={{ color: "#4B6082", textDecoration: "none" }}>Mentions légales</Link>
             <Link href="/confidentialite" style={{ color: "#4B6082", textDecoration: "none" }}>Confidentialité</Link>
