@@ -565,7 +565,8 @@ export default function Home() {
           </p>
           <div style={{ display: "flex", gap: "24px", fontSize: "13px", color: "#4B6082" }}>
             <a href="mailto:bonjour@happyretraite.fr" style={{ color: "#4B6082", textDecoration: "none" }}>bonjour@happyretraite.fr</a>
-            <a href="#" style={{ color: "#4B6082", textDecoration: "none" }}>Mentions légales</a>
+            <Link href="/mentions-legales" style={{ color: "#4B6082", textDecoration: "none" }}>Mentions légales</Link>
+            <Link href="/confidentialite" style={{ color: "#4B6082", textDecoration: "none" }}>Confidentialité</Link>
             <Link href="/contact" style={{ color: "#4B6082", textDecoration: "none" }}>Contact</Link>
           </div>
         </div>
