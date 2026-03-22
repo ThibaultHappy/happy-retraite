@@ -80,6 +80,20 @@ const articles = [
     badge: "Fonctionnaire",
     temps: "6 min",
   },
+  {
+    slug: "carmf-retraite-medecins-liberaux-guide",
+    titre: "CARMF retraite : le guide complet pour médecins libéraux",
+    desc: "4 régimes, cotisations 2026, calcul de pension et stratégies d'optimisation pour les médecins libéraux.",
+    badge: "Professions libérales",
+    temps: "9 min",
+  },
+  {
+    slug: "carcdsf-retraite-chirurgiens-dentistes-sages-femmes",
+    titre: "CARCDSF retraite : guide pour chirurgiens-dentistes et sages-femmes",
+    desc: "Cotisations, calcul de pension et paradoxe des hauts revenus — tout ce que les affiliés CARCDSF doivent savoir.",
+    badge: "Professions libérales",
+    temps: "8 min",
+  },
 ];
 
 const badgeColors: Record<string, { bg: string; color: string }> = {
