@@ -124,6 +124,19 @@ export default function ArticlePage() {
           </GreenBox>
         </div>
 
+        {/* Sources */}
+        <div style={{ borderTop: "1px solid #E8EDF5", marginTop: "64px", paddingTop: "32px" }}>
+          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "20px", fontWeight: 700, color: "#0F1F3D", marginBottom: "16px" }}>Sources</h2>
+          <ul style={{ fontSize: "14px", color: "#6B7A99", lineHeight: 2, listStyle: "none", padding: 0 }}>
+            <li>→ <a href="https://www.economie.gouv.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>economie.gouv.fr</a> — Plan d&apos;Épargne Retraite (PER), règles et plafonds</li>
+            <li>→ <a href="https://www.service-public.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>service-public.fr</a> — Déductibilité des versements PER, cas des TNS</li>
+            <li>→ <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>impots.gouv.fr</a> — Plafond épargne retraite (case 6QS), fiscalité à la sortie</li>
+          </ul>
+          <p style={{ fontSize: "12px", color: "#9BA8BB", marginTop: "12px" }}>
+            Plafond PER 2026 : 10% des revenus nets N-1 dans la limite de 35 194€. Les TNS bénéficient d&apos;un plafond majoré — vérifiez sur impots.gouv.fr.
+          </p>
+        </div>
+
         {/* CTA Final */}
         <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
           <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>

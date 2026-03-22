@@ -140,6 +140,19 @@ export default function ArticlePage() {
           </div>
         </div>
 
+        {/* Sources */}
+        <div style={{ borderTop: "1px solid #E8EDF5", marginTop: "64px", paddingTop: "32px" }}>
+          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "20px", fontWeight: 700, color: "#0F1F3D", marginBottom: "16px" }}>Sources</h2>
+          <ul style={{ fontSize: "14px", color: "#6B7A99", lineHeight: 2, listStyle: "none", padding: 0 }}>
+            <li>→ <a href="https://www.autoentrepreneur.urssaf.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>autoentrepreneur.urssaf.fr</a> — Cotisations micro-entrepreneur, taux et seuils 2026</li>
+            <li>→ <a href="https://www.info-retraite.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>info-retraite.fr</a> — Relevé de carrière, validation des trimestres</li>
+            <li>→ <a href="https://www.service-public.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>service-public.fr</a> — Règles générales retraite des travailleurs indépendants</li>
+          </ul>
+          <p style={{ fontSize: "12px", color: "#9BA8BB", marginTop: "12px" }}>
+            Les montants et seuils sont susceptibles d&apos;évoluer chaque année. Vérifiez sur service-public.fr pour les valeurs définitives.
+          </p>
+        </div>
+
         {/* CTA Final */}
         <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
           <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>

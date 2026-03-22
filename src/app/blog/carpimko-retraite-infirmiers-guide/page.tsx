@@ -95,7 +95,7 @@ export default function ArticlePage() {
 
           <H2>Structure des cotisations</H2>
           <H3>Retraite de base (régime général)</H3>
-          <P>Vous cotisez à la CNAV (Caisse Nationale d&apos;Assurance Vieillesse) via votre URSSAF, comme un indépendant classique. Le taux est de 17,75% sur vos revenus BNC, dans la limite de 1 PASS (46 368€ en 2026), puis 0,6% au-delà.</P>
+          <P>Vous cotisez à la CNAV (Caisse Nationale d&apos;Assurance Vieillesse) via votre URSSAF, comme un indépendant classique. Le taux est de 17,75% sur vos revenus BNC, dans la limite de 1 PASS (48 060€ en 2026 — Source : URSSAF), puis 0,6% au-delà.</P>
           <H3>Retraite complémentaire CARPIMKO</H3>
           <P>Le régime complémentaire CARPIMKO fonctionne par points. La cotisation annuelle est composée d&apos;une part forfaitaire et d&apos;une part proportionnelle aux revenus BNC. En 2026 : cotisation forfaitaire ≈ 2 500€/an + cotisation proportionnelle ≈ 3,5% des revenus BNC au-delà d&apos;un seuil.</P>
           <H3>Régime invalidité-décès</H3>
@@ -124,6 +124,19 @@ export default function ArticlePage() {
           <GreenBox>
             <p style={{ margin: 0, lineHeight: 1.8 }}>Action prioritaire : connectez-vous sur info-retraite.fr et vérifiez que toutes vos années en libéral sont bien enregistrées. Contactez la CARPIMKO si des anomalies apparaissent (carpimko.com, 01 40 68 32 00).</p>
           </GreenBox>
+        </div>
+
+        {/* Sources */}
+        <div style={{ borderTop: "1px solid #E8EDF5", marginTop: "64px", paddingTop: "32px" }}>
+          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "20px", fontWeight: 700, color: "#0F1F3D", marginBottom: "16px" }}>Sources</h2>
+          <ul style={{ fontSize: "14px", color: "#6B7A99", lineHeight: 2, listStyle: "none", padding: 0 }}>
+            <li>→ <a href="https://www.carpimko.com" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>carpimko.com</a> — Cotisations, valeur du point, prestations invalidité-décès</li>
+            <li>→ <a href="https://www.cnavpl.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>cnavpl.fr</a> — Retraite de base des professions libérales paramédicales</li>
+            <li>→ <a href="https://www.urssaf.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>urssaf.fr</a> — PASS 2026 (48 060€), cotisations CNAV des auxiliaires médicaux libéraux</li>
+          </ul>
+          <p style={{ fontSize: "12px", color: "#9BA8BB", marginTop: "12px" }}>
+            Basé sur le PASS 2026 (48 060€) et les barèmes CARPIMKO en vigueur. Vérifiez les montants actualisés sur carpimko.com.
+          </p>
         </div>
 
         {/* CTA Final */}

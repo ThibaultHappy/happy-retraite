@@ -132,6 +132,19 @@ export default function ArticlePage() {
           </InfoBox>
         </div>
 
+        {/* Sources */}
+        <div style={{ borderTop: "1px solid #E8EDF5", marginTop: "64px", paddingTop: "32px" }}>
+          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "20px", fontWeight: 700, color: "#0F1F3D", marginBottom: "16px" }}>Sources</h2>
+          <ul style={{ fontSize: "14px", color: "#6B7A99", lineHeight: 2, listStyle: "none", padding: 0 }}>
+            <li>→ <a href="https://www.service-public.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>service-public.fr</a> — Trimestres assimilés, périodes validées, règles de calcul</li>
+            <li>→ <a href="https://www.info-retraite.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>info-retraite.fr</a> — Relevé de carrière, régularisation des anomalies</li>
+            <li>→ <a href="https://www.lassuranceretraite.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>lassuranceretraite.fr</a> — Décote, surcote et calcul de la pension de base</li>
+          </ul>
+          <p style={{ fontSize: "12px", color: "#9BA8BB", marginTop: "12px" }}>
+            En cas d&apos;anomalie sur votre relevé, contactez directement la caisse concernée (CARSAT, SSI, CIPAV...) avec vos justificatifs.
+          </p>
+        </div>
+
         {/* CTA Final */}
         <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
           <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>

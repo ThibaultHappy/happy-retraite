@@ -124,6 +124,19 @@ export default function ArticlePage() {
           </div>
         </div>
 
+        {/* Sources */}
+        <div style={{ borderTop: "1px solid #E8EDF5", marginTop: "64px", paddingTop: "32px" }}>
+          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "20px", fontWeight: 700, color: "#0F1F3D", marginBottom: "16px" }}>Sources</h2>
+          <ul style={{ fontSize: "14px", color: "#6B7A99", lineHeight: 2, listStyle: "none", padding: 0 }}>
+            <li>→ <a href="https://www.urssaf.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>urssaf.fr</a> — Cotisations TNS, dividendes et assiette de cotisation EURL</li>
+            <li>→ <a href="https://www.service-public.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>service-public.fr</a> — Régime social du gérant d&apos;EURL, retraite TNS</li>
+            <li>→ <a href="https://bofip.impots.gouv.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>bofip.impots.gouv.fr</a> — Plafond PER TNS, déductibilité Madelin</li>
+          </ul>
+          <p style={{ fontSize: "12px", color: "#9BA8BB", marginTop: "12px" }}>
+            Les règles de cotisation sur les dividendes d&apos;EURL évoluent régulièrement. Consultez urssaf.fr ou votre expert-comptable pour les modalités actualisées.
+          </p>
+        </div>
+
         {/* CTA Final */}
         <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
           <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>
