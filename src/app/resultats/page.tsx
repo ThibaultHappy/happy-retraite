@@ -129,7 +129,7 @@ function ResultatsContent() {
           <Link
             href="/diagnostic"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold"
-            style={{ backgroundColor: "#1D9E75" }}
+            style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)" }}
           >
             Faire mon diagnostic gratuit
           </Link>

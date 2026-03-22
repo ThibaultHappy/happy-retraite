@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
     // Email interne vers l'équipe
     await resend.emails.send({
-      from: "Happy Retraite <onboarding@resend.dev>",
+      from: "Happy Retraite <noreply@happyretraite.fr>",
       to: "bonjour@happyretraite.fr",
       subject: `[Contact HR] ${sujet} - ${prenom}`,
       html: `
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     // Email de confirmation à l'utilisateur
     await resend.emails.send({
-      from: "Happy Retraite <onboarding@resend.dev>",
+      from: "Happy Retraite <noreply@happyretraite.fr>",
       to: email,
       subject: "Nous avons bien reçu votre message",
       html: `

@@ -56,7 +56,7 @@ export default function Home() {
             <Link
               href="/diagnostic"
               style={{
-                backgroundColor: "#1D9E75",
+                background: "linear-gradient(to right, #10D98A, #2D9CDB)",
                 color: "white",
                 padding: "10px 22px",
                 borderRadius: "999px",
@@ -113,14 +113,14 @@ export default function Home() {
               display: "inline-flex",
               alignItems: "center",
               gap: "8px",
-              backgroundColor: "#1D9E75",
+              background: "linear-gradient(to right, #10D98A, #2D9CDB)",
               color: "white",
               padding: "16px 32px",
               borderRadius: "999px",
               fontSize: "17px",
               fontWeight: 600,
               textDecoration: "none",
-              boxShadow: "0 4px 20px rgba(29,158,117,0.4)",
+              boxShadow: "0 4px 20px rgba(16,217,138,0.35)",
             }}
           >
             Obtenir mon diagnostic gratuit
@@ -312,10 +312,10 @@ export default function Home() {
               href="/diagnostic"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
-                backgroundColor: "#1D9E75", color: "white",
+                background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white",
                 padding: "16px 32px", borderRadius: "999px",
                 fontSize: "15px", fontWeight: 600, textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(29,158,117,0.3)",
+                boxShadow: "0 4px 20px rgba(16,217,138,0.3)",
               }}
             >
               Démarrer mon diagnostic gratuit
@@ -463,8 +463,8 @@ export default function Home() {
                 style={{
                   display: "block", textAlign: "center", padding: "12px 24px",
                   borderRadius: "10px", fontWeight: 600, fontSize: "14px",
-                  backgroundColor: "#1D9E75", color: "white", textDecoration: "none",
-                  boxShadow: "0 4px 16px rgba(29,158,117,0.3)", whiteSpace: "nowrap",
+                  background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", textDecoration: "none",
+                  boxShadow: "0 4px 16px rgba(16,217,138,0.3)", whiteSpace: "nowrap",
                 }}
               >
                 Obtenir mon rapport — 29€
@@ -545,10 +545,10 @@ export default function Home() {
             href="/diagnostic"
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
-              backgroundColor: "#1D9E75", color: "white",
+              background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white",
               padding: "16px 32px", borderRadius: "999px",
               fontSize: "15px", fontWeight: 600, textDecoration: "none",
-              boxShadow: "0 4px 20px rgba(29,158,117,0.4)",
+              boxShadow: "0 4px 20px rgba(16,217,138,0.35)",
             }}
           >
             Obtenir mon diagnostic gratuit

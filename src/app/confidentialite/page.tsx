@@ -22,7 +22,7 @@ export default function ConfidentialitePage() {
           <Link
             href="/diagnostic"
             style={{
-              backgroundColor: "#1D9E75",
+              background: "linear-gradient(to right, #10D98A, #2D9CDB)",
               color: "white",
               padding: "10px 22px",
               borderRadius: "999px",
