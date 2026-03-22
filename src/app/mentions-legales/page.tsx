@@ -21,6 +21,7 @@ export default function MentionsLegalesPage() {
           </Link>
           <Link
             href="/diagnostic"
+            className="hidden sm:inline-block"
             style={{
               background: "linear-gradient(to right, #10D98A, #2D9CDB)",
               color: "white",
