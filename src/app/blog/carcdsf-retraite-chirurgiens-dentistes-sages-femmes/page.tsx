@@ -200,7 +200,7 @@ export default function ArticlePage() {
             Pour un dentiste à 120 000€ BNC : cotisations retraite totales ~22 700€/an (19% du BNC). Pour une sage-femme à 50 000€ BNC : cotisations retraite totales ~9 200€/an (18% du BNC). Les taux sont similaires en pourcentage — mais les montants absolus et les pensions résultantes sont très différents.
           </P>
           <InfoBox>
-            La revalorisation du PASS 2026 (+2% à 46 368€) entraîne mécaniquement une légère hausse des cotisations pour les deux professions. Les droits générés augmentent en proportion.
+            La revalorisation du PASS 2026 (+3% à <strong>48 060€</strong>, source : URSSAF, urssaf.fr) entraîne mécaniquement une légère hausse des cotisations pour les deux professions. Les droits générés augmentent en proportion. Vérifiez sur carcdsf.fr pour les montants définitifs.
           </InfoBox>
 
           <H2>Les pièges fréquents</H2>
@@ -240,6 +240,20 @@ export default function ArticlePage() {
             Ressources officielles : carcdsf.fr pour votre simulation personnalisée — info-retraite.fr pour vérifier l'intégralité de vos droits multi-régimes — carmf.fr pour les médecins libéraux.
           </GreenBox>
 
+        </div>
+
+        {/* Sources */}
+        <div style={{ borderTop: "1px solid #E8EDF5", marginTop: "64px", paddingTop: "32px" }}>
+          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "20px", fontWeight: 700, color: "#0F1F3D", marginBottom: "16px" }}>Sources</h2>
+          <ul style={{ fontSize: "14px", color: "#6B7A99", lineHeight: 2, listStyle: "none", padding: 0 }}>
+            <li>→ <a href="https://www.carcdsf.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>carcdsf.fr</a> — Cotisations, valeur du point, ASV chirurgiens-dentistes et sages-femmes</li>
+            <li>→ <a href="https://www.cnavpl.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>cnavpl.fr</a> — Retraite de base des professions libérales</li>
+            <li>→ <a href="https://www.service-public.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>service-public.fr</a> — Règles générales retraite, retraite progressive, rachat de trimestres</li>
+            <li>→ <a href="https://www.info-retraite.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>info-retraite.fr</a> — Relevé de carrière, vérification des droits multi-régimes (CNRACL, CNAVPL, CARCDSF)</li>
+          </ul>
+          <p style={{ fontSize: "12px", color: "#9BA8BB", marginTop: "12px" }}>
+            Basé sur le PASS 2026 (48 060€) — les montants exacts sont susceptibles d'évoluer. Vérifiez sur carcdsf.fr pour les valeurs définitives.
+          </p>
         </div>
 
         {/* Liens internes */}

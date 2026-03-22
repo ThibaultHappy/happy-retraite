@@ -153,7 +153,7 @@ export default function ArticlePage() {
 
           <H2>Les cotisations CARMF en 2026</H2>
           <P>
-            Les cotisations retraite d'un médecin libéral sont calculées sur ses revenus BNC (Bénéfices Non Commerciaux) nets. Le PASS (Plafond Annuel de la Sécurité Sociale) 2026 est fixé à 46 368€.
+            Les cotisations retraite d'un médecin libéral sont calculées sur ses revenus BNC (Bénéfices Non Commerciaux) nets. Le PASS (Plafond Annuel de la Sécurité Sociale) 2026 est fixé à <strong>48 060€</strong> (source : URSSAF, urssaf.fr) — vérifiez sur carmf.fr pour les montants définitifs actualisés.
           </P>
 
           <H3>Tableau des cotisations pour un médecin à 100 000€ BNC</H3>
@@ -245,6 +245,20 @@ export default function ArticlePage() {
           <GreenBox>
             Conseil clé : avant tout changement de secteur, demandez à votre CARMF (carmf.fr, 01 40 68 32 00) une simulation de pension comparative secteur 1 vs secteur 2. Ce service est gratuit et peut éviter une décision coûteuse.
           </GreenBox>
+        </div>
+
+        {/* Sources */}
+        <div style={{ borderTop: "1px solid #E8EDF5", marginTop: "64px", paddingTop: "32px" }}>
+          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "20px", fontWeight: 700, color: "#0F1F3D", marginBottom: "16px" }}>Sources</h2>
+          <ul style={{ fontSize: "14px", color: "#6B7A99", lineHeight: 2, listStyle: "none", padding: 0 }}>
+            <li>→ <a href="https://www.carmf.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>carmf.fr</a> — Cotisations, valeur du point, ASV médecins libéraux</li>
+            <li>→ <a href="https://www.cnavpl.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>cnavpl.fr</a> — Retraite de base des professions libérales</li>
+            <li>→ <a href="https://www.service-public.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>service-public.fr</a> — Règles générales retraite, carrière longue, rachat de trimestres</li>
+            <li>→ <a href="https://www.urssaf.fr" target="_blank" rel="noopener noreferrer" style={{ color: "#1D9E75", textDecoration: "none" }}>urssaf.fr</a> — PASS 2026, cotisations sociales des travailleurs indépendants</li>
+          </ul>
+          <p style={{ fontSize: "12px", color: "#9BA8BB", marginTop: "12px" }}>
+            Basé sur le PASS 2026 (48 060€) — les montants exacts sont susceptibles d'évoluer. Vérifiez sur carmf.fr pour les valeurs définitives.
+          </p>
         </div>
 
         {/* Lien interne */}
