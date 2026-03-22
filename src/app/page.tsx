@@ -149,17 +149,13 @@ export default function Home() {
                 border: "1px solid #E8EDF5",
                 borderRadius: "12px",
                 padding: "24px",
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "16px",
+                textAlign: "center",
               }}
             >
-              <div>
-                <div style={{ fontFamily: DM, fontSize: "32px", fontWeight: 700, color: "#1D9E75", marginBottom: "6px" }}>
-                  {stat.number}
-                </div>
-                <p style={{ color: "#6B7A99", fontSize: "14px", lineHeight: 1.4 }}>{stat.label}</p>
+              <div style={{ fontFamily: DM, fontSize: "32px", fontWeight: 700, color: "#1D9E75", marginBottom: "6px" }}>
+                {stat.number}
               </div>
+              <p style={{ color: "#6B7A99", fontSize: "14px", lineHeight: 1.4 }}>{stat.label}</p>
             </div>
           ))}
         </div>
