@@ -735,7 +735,7 @@ export function generateReportHTML(data: ReportData): string {
 
   <div class="chart-row">
     <div class="chart-box">
-      <div class="chart-title">Répartition pension vs écart</div>
+      <div class="chart-title">${isExcedent ? "Couverture de l'objectif" : "Répartition pension vs écart"}</div>
       <svg width="200" height="200" viewBox="0 0 200 200">
         <!-- Donut chart -->
         <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E8EDF5" stroke-width="24"/>
@@ -794,19 +794,21 @@ export function generateReportHTML(data: ReportData): string {
         <rect x="110" y="20" width="40" height="110" rx="4" fill="#E8EDF5"/>
         <text x="130" y="148" text-anchor="middle" font-size="9" fill="#6B7A99" font-family="DM Sans, Arial, sans-serif">Cible</text>
         <!-- Gap indicator -->
-        <line x1="90" y1="${Math.round(130 - (pension / revenuCible) * 110)}" x2="110" y2="${Math.round(130 - (pension / revenuCible) * 110)}" stroke="#E53E3E" stroke-width="1" stroke-dasharray="3 2"/>
+        ${isExcedent ? `` : `<line x1="90" y1="${Math.round(130 - (pension / revenuCible) * 110)}" x2="110" y2="${Math.round(130 - (pension / revenuCible) * 110)}" stroke="#E53E3E" stroke-width="1" stroke-dasharray="3 2"/>
         <line x1="90" y1="20" x2="110" y2="20" stroke="#E53E3E" stroke-width="1" stroke-dasharray="3 2"/>
         <line x1="100" y1="${Math.round(130 - (pension / revenuCible) * 110)}" x2="100" y2="20" stroke="#E53E3E" stroke-width="1.5"/>
-        <text x="105" y="${Math.round(75 - (pension / revenuCible) * 30)}" font-size="8" fill="#E53E3E" font-family="DM Sans, Arial, sans-serif">-${gapPct}%</text>
+        <text x="105" y="${Math.round(75 - (pension / revenuCible) * 30)}" font-size="8" fill="#E53E3E" font-family="DM Sans, Arial, sans-serif">-${gapPct}%</text>`}
       </svg>
       <div style="font-size:12px;color:#6B7A99;text-align:center;margin-top:8px">
-        <span style="color:#1D9E75;font-weight:700">${formatCurrency(pension)}</span> sur <span style="color:#0F1F3D;font-weight:700">${formatCurrency(revenuCible)}</span> visés
+        ${isExcedent
+          ? `<span style="color:#1D9E75;font-weight:700">${formatCurrency(pension)}</span> — objectif <span style="color:#0F1F3D;font-weight:700">${formatCurrency(revenuCible)}</span> couvert`
+          : `<span style="color:#1D9E75;font-weight:700">${formatCurrency(pension)}</span> sur <span style="color:#0F1F3D;font-weight:700">${formatCurrency(revenuCible)}</span> visés`}
       </div>
     </div>
   </div>
 
   <div class="info-box">
-    <div class="info-box-title">💡 Ce que signifie cet écart</div>
+    <div class="info-box-title">${isExcedent ? "💡 Ce que signifie cet excédent" : "💡 Ce que signifie cet écart"}</div>
     <p>${isExcedent
       ? `Bonne nouvelle : votre pension estimée de ${formatCurrency(pension)}/mois dépasse votre objectif de ${formatCurrency(revenuCible)}/mois. Vous disposez d'un excédent de ${formatCurrency(absGap)}/mois. Avec ${anneesRestantes} années devant vous, ce surplus peut être investi pour renforcer encore votre indépendance financière.`
       : `Un écart de ${formatCurrency(absGap)}/mois représente ${formatCurrency(absGap * 12)}/an à générer par votre épargne personnelle. Avec ${anneesRestantes} années devant vous, une stratégie structurée peut transformer cet écart en opportunité d'indépendance financière.`
@@ -856,8 +858,10 @@ export function generateReportHTML(data: ReportData): string {
   </div>
 
   <div class="section-badge">Stratégies recommandées</div>
-  <h2>Vos 3 leviers prioritaires</h2>
-  <p class="section-subtitle">Classés par impact potentiel sur votre retraite, adaptés à votre profil ${statutLabel.toLowerCase()}.</p>
+  <h2>${isExcedent ? "Vos 3 leviers pour optimiser votre patrimoine" : "Vos 3 leviers prioritaires"}</h2>
+  <p class="section-subtitle">${isExcedent
+    ? `Vous êtes en bonne position. Ces stratégies vous permettent d'aller encore plus loin.`
+    : `Classés par impact potentiel sur votre retraite, adaptés à votre profil ${statutLabel.toLowerCase()}.`}</p>
 
   <div class="strategy-list">
     <div class="strategy-card">
@@ -1207,7 +1211,7 @@ export function generateReportHTML(data: ReportData): string {
     <div class="cover-logo-text">Happy<span>Retraite</span></div>
   </div>
 
-  <h2>Votre retraite se construit<br/>aujourd'hui</h2>
+  <h2>${isExcedent ? "Votre retraite est bien partie !" : "Votre retraite se construit<br/>aujourd'hui"}</h2>
   <p>
     ${data.prenom}, vous avez maintenant toutes les clés pour agir.<br/>
     ${isExcedent
@@ -1217,9 +1221,15 @@ export function generateReportHTML(data: ReportData): string {
   </p>
 
   <div style="background:rgba(29,158,117,0.15);border:1px solid rgba(29,158,117,0.3);border-radius:16px;padding:28px 40px;max-width:420px;margin-bottom:40px;">
+    ${isExcedent ? `
+    <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">Votre pension estimée</div>
+    <div style="font-family:'DM Sans',Arial,sans-serif;font-size:36px;font-weight:700;color:#1D9E75;margin-bottom:4px;">${formatCurrency(pension)}<span style="font-size:16px;color:rgba(255,255,255,0.5)">/mois</span></div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.6);">Objectif ${formatCurrency(revenuCible)} couvert ✓</div>
+    ` : `
     <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">Votre objectif</div>
     <div style="font-family:'DM Sans',Arial,sans-serif;font-size:36px;font-weight:700;color:#1D9E75;margin-bottom:4px;">${formatCurrency(revenuCible)}<span style="font-size:16px;color:rgba(255,255,255,0.5)">/mois</span></div>
     <div style="font-size:13px;color:rgba(255,255,255,0.6);">Objectif : ${formatCurrency(revenuCible)}/mois</div>
+    `}
   </div>
 
   <p class="disclaimer">
