@@ -695,7 +695,7 @@ export function generateReportHTML(data: ReportData): string {
     </div>
     <div class="cover-info-card">
       <div class="cover-info-label">${isExcedent ? "Excédent mensuel" : "Écart à combler"}</div>
-      <div class="cover-info-value" style="color: ${isExcedent ? "#1D9E75" : "#FF8A8A"};">${formatCurrency(absGap)}<span style="font-size:13px;color:rgba(255,255,255,0.5)">/mois</span></div>
+      <div class="cover-info-value" style="color: ${isExcedent ? "#1D9E75" : "#FF8A8A"};">${isExcedent ? `+${formatCurrency(gap)}` : formatCurrency(absGap)}<span style="font-size:13px;color:rgba(255,255,255,0.5)">/mois</span></div>
     </div>
   </div>
 
@@ -1219,7 +1219,7 @@ export function generateReportHTML(data: ReportData): string {
   <div style="background:rgba(29,158,117,0.15);border:1px solid rgba(29,158,117,0.3);border-radius:16px;padding:28px 40px;max-width:420px;margin-bottom:40px;">
     <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">Votre objectif</div>
     <div style="font-family:'DM Sans',Arial,sans-serif;font-size:36px;font-weight:700;color:#1D9E75;margin-bottom:4px;">${formatCurrency(revenuCible)}<span style="font-size:16px;color:rgba(255,255,255,0.5)">/mois</span></div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.6);">Pension ${formatCurrency(pension)} ${isExcedent ? `· Excédent +${formatCurrency(absGap)}` : `+ épargne ${formatCurrency(absGap)}`}</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.6);">Objectif : ${formatCurrency(revenuCible)}/mois</div>
   </div>
 
   <p class="disclaimer">
