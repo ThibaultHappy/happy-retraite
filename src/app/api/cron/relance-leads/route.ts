@@ -95,6 +95,19 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // Mode test : envoie directement une relance à l'adresse fournie
+  const testEmail = req.nextUrl.searchParams.get("test_email");
+  if (testEmail) {
+    const html = buildRelanceHTML({ prenom: "Sophie", pension_estimee: 2800, email: testEmail });
+    await resend.emails.send({
+      from: "Happy Retraite <bonjour@happyretraite.fr>",
+      to: testEmail,
+      subject: "Sophie, votre rapport retraite vous attend 👋",
+      html,
+    });
+    return NextResponse.json({ sent: 1, test: true, to: testEmail });
+  }
+
   let leads: Record<string, unknown>[] = [];
   try {
     const raw = await fs.readFile(LEADS_FILE, "utf-8");
