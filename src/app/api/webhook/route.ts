@@ -2,6 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
 import { buildPDF } from "@/lib/generate-pdf";
+import { promises as fs } from "fs";
+import path from "path";
+
+const LEADS_FILE = path.join("/tmp", "leads.json");
+
+async function markLeadPurchased(email: string) {
+  try {
+    const raw = await fs.readFile(LEADS_FILE, "utf-8");
+    const leads: Record<string, unknown>[] = JSON.parse(raw);
+    const updated = leads.map((l) => l.email === email ? { ...l, purchased: true } : l);
+    await fs.writeFile(LEADS_FILE, JSON.stringify(updated, null, 2));
+  } catch {
+    // leads.json absent ou non partagé entre instances — pas bloquant
+  }
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -100,6 +115,9 @@ export async function POST(req: NextRequest) {
         console.error("  ❌ Email send failed:", emailErr);
       }
     }
+
+    // Marquer le lead comme acheté
+    if (meta.email) await markLeadPurchased(meta.email);
   }
 
   return NextResponse.json({ received: true });

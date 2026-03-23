@@ -7,6 +7,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const LEADS_FILE = path.join("/tmp", "leads.json");
 
+// NOTE : /tmp n'est pas partagé entre instances Vercel. Pour une persistance
+// fiable en production, migrer vers Vercel KV (Redis).
 async function appendLead(lead: Record<string, unknown>) {
   let leads: Record<string, unknown>[] = [];
   try {
@@ -15,7 +17,7 @@ async function appendLead(lead: Record<string, unknown>) {
   } catch {
     // Fichier inexistant ou invalide — on repart de zéro
   }
-  leads.push({ ...lead, captured_at: new Date().toISOString() });
+  leads.push({ ...lead, captured_at: new Date().toISOString(), purchased: false, relance_sent: false });
   await fs.writeFile(LEADS_FILE, JSON.stringify(leads, null, 2));
 }
 
