@@ -47,8 +47,8 @@ export function generateReportHTML(data: ReportData): string {
   const statutLabel = getStatutLabel(data.statut);
   const dateGen = data.date_generation || new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
-  // Chart: pension en % de l'objectif
-  const pensionPct = revenuCible > 0 ? Math.min(100, Math.round((pension / revenuCible) * 100)) : 70;
+  // Chart: pension en % de l'objectif (pas de plafond à 100%)
+  const pensionPct = revenuCible > 0 ? Math.round((pension / revenuCible) * 100) : 70;
   const gapPct = isExcedent ? 0 : 100 - pensionPct;
 
   // SVG donut chart
@@ -56,7 +56,9 @@ export function generateReportHTML(data: ReportData): string {
   const cx = 100;
   const cy = 100;
   const circumference = 2 * Math.PI * r;
-  const pensionDash = (pensionPct / 100) * circumference;
+  // Pour le donut: si excédent → cercle entièrement vert (100%), sinon proportion réelle
+  const pensionDashPct = isExcedent ? 100 : pensionPct;
+  const pensionDash = (pensionDashPct / 100) * circumference;
   const gapDash = (gapPct / 100) * circumference;
 
   // Checkmark SVG (évite le rendu □ de ${CHECK} dans Chromium/Puppeteer)
@@ -743,10 +745,10 @@ export function generateReportHTML(data: ReportData): string {
           stroke-dasharray="${pensionDash.toFixed(1)} ${(circumference - pensionDash).toFixed(1)}"
           stroke-dashoffset="${(circumference * 0.25).toFixed(1)}"
           stroke-linecap="round"/>
-        <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E53E3E" stroke-width="24"
+        ${isExcedent ? `` : `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E53E3E" stroke-width="24"
           stroke-dasharray="${gapDash.toFixed(1)} ${(circumference - gapDash).toFixed(1)}"
           stroke-dashoffset="${(circumference * 0.25 - pensionDash).toFixed(1)}"
-          stroke-linecap="round" opacity="0.8"/>
+          stroke-linecap="round" opacity="0.8"/>`}
         <text x="${cx}" y="${cy - 6}" text-anchor="middle" font-size="20" font-weight="700" fill="#0F1F3D" font-family="DM Sans, Arial, sans-serif">${pensionPct}%</text>
         <text x="${cx}" y="${cy + 14}" text-anchor="middle" font-size="11" fill="#6B7A99" font-family="DM Sans, Arial, sans-serif">couverts</text>
       </svg>

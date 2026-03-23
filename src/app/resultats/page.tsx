@@ -141,7 +141,7 @@ function ResultatsContent() {
   const { formData: f, result: r } = data;
   const prenom = f.prenom ? `, ${f.prenom}` : "";
   const gap = r.gap;
-  const tauxCouverture = Math.min(Math.round((r.pensionEstimee / Math.max(f.revenuCible, 1)) * 100), 100);
+  const tauxCouverture = Math.round((r.pensionEstimee / Math.max(f.revenuCible, 1)) * 100);
   const gapTotal = gap * 12 * 20;
   const statutLabel = LABEL_STATUT[f.statut] || f.statut;
 
@@ -218,7 +218,7 @@ function ResultatsContent() {
             <div className="h-3 rounded-full overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
               <div
                 className="h-full rounded-full transition-all duration-700"
-                style={{ width: `${tauxCouverture}%`, backgroundColor: "#1D9E75" }}
+                style={{ width: `${Math.min(tauxCouverture, 100)}%`, backgroundColor: "#1D9E75" }}
               />
             </div>
             <div className="flex justify-between text-xs mt-2" style={{ color: "#4B6082" }}>
