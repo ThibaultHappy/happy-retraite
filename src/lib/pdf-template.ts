@@ -39,14 +39,17 @@ export function generateReportHTML(data: ReportData): string {
   const anneesRestantes = Math.max(0, 64 - age);
   const pension = parseFloat(data.pension_estimee) || 0;
   const gap = parseFloat(data.gap_mensuel) || 0;
-  const revenuCible = pension + gap;
+  // gap > 0 = excédent (pension > objectif), gap < 0 = manque (pension < objectif)
+  const isExcedent = gap > 0;
+  const absGap = Math.abs(gap);
+  // revenuCible = objectif de l'utilisateur = pension - gap
+  const revenuCible = pension - gap;
   const statutLabel = getStatutLabel(data.statut);
   const dateGen = data.date_generation || new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
-  // Chart: répartition pension vs gap (donut via SVG)
-  const total = pension + gap;
-  const pensionPct = total > 0 ? Math.round((pension / total) * 100) : 70;
-  const gapPct = 100 - pensionPct;
+  // Chart: pension en % de l'objectif
+  const pensionPct = revenuCible > 0 ? Math.min(100, Math.round((pension / revenuCible) * 100)) : 70;
+  const gapPct = isExcedent ? 0 : 100 - pensionPct;
 
   // SVG donut chart
   const r = 80;
@@ -56,9 +59,12 @@ export function generateReportHTML(data: ReportData): string {
   const pensionDash = (pensionPct / 100) * circumference;
   const gapDash = (gapPct / 100) * circumference;
 
+  // Checkmark SVG (évite le rendu □ de ${CHECK} dans Chromium/Puppeteer)
+  const CHECK = `<svg width="14" height="14" viewBox="0 0 14 14"><polyline points="2,7 5,11 12,3" stroke="#1D9E75" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
   // Strategies based on years remaining
-  const perVersement = Math.max(200, Math.round(gap * 0.5));
-  const assuranceVie = Math.max(100, Math.round(gap * 0.3));
+  const perVersement = Math.max(200, Math.round(absGap * 0.5));
+  const assuranceVie = Math.max(100, Math.round(absGap * 0.3));
 
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -688,8 +694,8 @@ export function generateReportHTML(data: ReportData): string {
       <div class="cover-info-value">${formatCurrency(pension)}<span style="font-size:13px;color:rgba(255,255,255,0.5)">/mois</span></div>
     </div>
     <div class="cover-info-card">
-      <div class="cover-info-label">Écart à combler</div>
-      <div class="cover-info-value" style="color: #FF8A8A;">${formatCurrency(gap)}<span style="font-size:13px;color:rgba(255,255,255,0.5)">/mois</span></div>
+      <div class="cover-info-label">${isExcedent ? "Excédent mensuel" : "Écart à combler"}</div>
+      <div class="cover-info-value" style="color: ${isExcedent ? "#1D9E75" : "#FF8A8A"};">${formatCurrency(absGap)}<span style="font-size:13px;color:rgba(255,255,255,0.5)">/mois</span></div>
     </div>
   </div>
 
@@ -721,9 +727,9 @@ export function generateReportHTML(data: ReportData): string {
       <div class="kpi-sub">Pour maintenir votre niveau de vie</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Écart mensuel</div>
-      <div class="kpi-value danger">${formatCurrency(gap)}<span style="font-size:13px;font-weight:500;color:#6B7A99">/mois</span></div>
-      <div class="kpi-sub">À compléter par l'épargne</div>
+      <div class="kpi-label">${isExcedent ? "Excédent mensuel" : "Écart mensuel"}</div>
+      <div class="kpi-value ${isExcedent ? "" : "danger"}">${formatCurrency(absGap)}<span style="font-size:13px;font-weight:500;color:#6B7A99">/mois</span></div>
+      <div class="kpi-sub">${isExcedent ? "Votre pension couvre votre objectif" : "À compléter par l'épargne"}</div>
     </div>
   </div>
 
@@ -750,11 +756,17 @@ export function generateReportHTML(data: ReportData): string {
           <span>Pension de base</span>
           <span class="legend-pct" style="color:#1D9E75">${pensionPct}%</span>
         </div>
+        ${isExcedent ? `
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#1D9E75"></div>
+          <span>Excédent</span>
+          <span class="legend-pct" style="color:#1D9E75">+${formatCurrency(absGap)}/mois</span>
+        </div>` : `
         <div class="legend-item">
           <div class="legend-dot" style="background:#E53E3E"></div>
           <span>Écart à combler</span>
           <span class="legend-pct" style="color:#E53E3E">${gapPct}%</span>
-        </div>
+        </div>`}
       </div>
     </div>
 
@@ -795,7 +807,10 @@ export function generateReportHTML(data: ReportData): string {
 
   <div class="info-box">
     <div class="info-box-title">💡 Ce que signifie cet écart</div>
-    <p>Un écart de ${formatCurrency(gap)}/mois représente ${formatCurrency(gap * 12)}/an à générer par votre épargne personnelle. Avec ${anneesRestantes} années devant vous, une stratégie structurée peut transformer cet écart en opportunité d'indépendance financière.</p>
+    <p>${isExcedent
+      ? `Bonne nouvelle : votre pension estimée de ${formatCurrency(pension)}/mois dépasse votre objectif de ${formatCurrency(revenuCible)}/mois. Vous disposez d'un excédent de ${formatCurrency(absGap)}/mois. Avec ${anneesRestantes} années devant vous, ce surplus peut être investi pour renforcer encore votre indépendance financière.`
+      : `Un écart de ${formatCurrency(absGap)}/mois représente ${formatCurrency(absGap * 12)}/an à générer par votre épargne personnelle. Avec ${anneesRestantes} années devant vous, une stratégie structurée peut transformer cet écart en opportunité d'indépendance financière.`
+    }</p>
   </div>
 </div>
 
@@ -864,7 +879,7 @@ export function generateReportHTML(data: ReportData): string {
         <p>Constitution d'un patrimoine tangible générant des revenus passifs complémentaires à la retraite. Le LMNP offre une fiscalité avantageuse sur les revenus locatifs.</p>
       </div>
       <div class="strategy-amount">
-        <div class="strategy-amount-value" style="color:#2D9CDB;">${formatCurrency(Math.round(gap * 0.4))}</div>
+        <div class="strategy-amount-value" style="color:#2D9CDB;">${formatCurrency(Math.round(absGap * 0.4))}</div>
         <div class="strategy-amount-label">/mois de loyers visés</div>
       </div>
     </div>
@@ -912,7 +927,10 @@ export function generateReportHTML(data: ReportData): string {
 
   <div class="section-badge">Focus PER</div>
   <h2>Le Plan d'Épargne Retraite expliqué</h2>
-  <p class="section-subtitle">Le PER est l'outil le plus puissant pour combler votre écart de ${formatCurrency(gap)}/mois.</p>
+  <p class="section-subtitle">${isExcedent
+    ? `Votre pension couvre déjà votre objectif. Le PER reste un excellent outil pour optimiser votre fiscalité et renforcer votre capital retraite.`
+    : `Le PER est l'outil le plus puissant pour combler votre écart de ${formatCurrency(absGap)}/mois.`
+  }</p>
 
   <table>
     <thead>
@@ -925,13 +943,13 @@ export function generateReportHTML(data: ReportData): string {
     <tbody>
       <tr>
         <td>Déduction fiscale</td>
-        <td class="green">✓ Jusqu'à 10% revenus</td>
-        <td class="green">✓ Abondement employeur</td>
+        <td class="green">${CHECK} Jusqu'à 10% revenus</td>
+        <td class="green">${CHECK} Abondement employeur</td>
       </tr>
       <tr>
         <td>Sortie en capital</td>
-        <td class="green">✓ Possible à 100%</td>
-        <td class="green">✓ Possible à 100%</td>
+        <td class="green">${CHECK} Possible à 100%</td>
+        <td class="green">${CHECK} Possible à 100%</td>
       </tr>
       <tr>
         <td>Sortie anticipée</td>
@@ -945,7 +963,7 @@ export function generateReportHTML(data: ReportData): string {
       </tr>
       <tr>
         <td>Recommandé pour vous</td>
-        <td class="green">✓ Prioritaire</td>
+        <td class="green">${CHECK} Prioritaire</td>
         <td>Si disponible chez employeur</td>
       </tr>
     </tbody>
@@ -1192,14 +1210,16 @@ export function generateReportHTML(data: ReportData): string {
   <h2>Votre retraite se construit<br/>aujourd'hui</h2>
   <p>
     ${data.prenom}, vous avez maintenant toutes les clés pour agir.<br/>
-    Avec ${anneesRestantes} années devant vous et les bons outils,<br/>
-    combler cet écart de ${formatCurrency(gap)}/mois est tout à fait atteignable.
+    ${isExcedent
+      ? `Votre pension estimée couvre déjà votre objectif — avec un excédent de ${formatCurrency(absGap)}/mois.<br/>Continuez à construire votre patrimoine pour renforcer encore votre sécurité financière.`
+      : `Avec ${anneesRestantes} années devant vous et les bons outils,<br/>combler cet écart de ${formatCurrency(absGap)}/mois est tout à fait atteignable.`
+    }
   </p>
 
   <div style="background:rgba(29,158,117,0.15);border:1px solid rgba(29,158,117,0.3);border-radius:16px;padding:28px 40px;max-width:420px;margin-bottom:40px;">
     <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">Votre objectif</div>
     <div style="font-family:'DM Sans',Arial,sans-serif;font-size:36px;font-weight:700;color:#1D9E75;margin-bottom:4px;">${formatCurrency(revenuCible)}<span style="font-size:16px;color:rgba(255,255,255,0.5)">/mois</span></div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.6);">Pension ${formatCurrency(pension)} + épargne ${formatCurrency(gap)}</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.6);">Pension ${formatCurrency(pension)} ${isExcedent ? `· Excédent +${formatCurrency(absGap)}` : `+ épargne ${formatCurrency(absGap)}`}</div>
   </div>
 
   <p class="disclaimer">
