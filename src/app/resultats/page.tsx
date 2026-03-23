@@ -24,6 +24,10 @@ function ResultatsContent() {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [pdfToken, setPdfToken] = useState<string | null>(null);
   const [pdfGenerating, setPdfGenerating] = useState(false);
+  const [leadCaptured, setLeadCaptured] = useState(false);
+  const [leadEmail, setLeadEmail] = useState("");
+  const [leadLoading, setLeadLoading] = useState(false);
+  const [leadError, setLeadError] = useState("");
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -83,6 +87,44 @@ function ResultatsContent() {
         .catch(() => setPaymentStatus("idle"));
     }
   }, [searchParams]);
+
+  const handleLeadCapture = useCallback(async () => {
+    if (!data || !leadEmail.includes("@")) {
+      setLeadError("Veuillez entrer une adresse email valide.");
+      return;
+    }
+    setLeadError("");
+    setLeadLoading(true);
+    const { formData: f, result: r } = data;
+    const revenuCible = r.pensionEstimee - r.gap;
+    const tauxCouv = Math.round((r.pensionEstimee / Math.max(revenuCible, 1)) * 100);
+    try {
+      await fetch("/api/capture-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: leadEmail,
+          prenom: f.prenom || "",
+          pension_estimee: r.pensionEstimee,
+          age_depart: r.ageDepart,
+          annees_restantes: r.anneesRestantes,
+          trimestres_valides: r.trimestresValides,
+          trimestres_requis: r.trimestresRequis,
+          taux_couverture: tauxCouv,
+          revenu_cible: revenuCible,
+          gap: r.gap,
+          statut: f.statut,
+          annee_naissance: f.anneeNaissance,
+        }),
+      });
+      posthog.capture("lead_captured", { statut: f.statut, pension_estimee: r.pensionEstimee });
+      setLeadCaptured(true);
+    } catch {
+      setLeadError("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setLeadLoading(false);
+    }
+  }, [data, leadEmail]);
 
   const handleCheckout = useCallback(async () => {
     if (!data) return;
@@ -289,7 +331,7 @@ function ResultatsContent() {
         </div>
       </section>
 
-      {/* ── SECTION 3 — LEVIERS ────────────────────────────────────────────── */}
+      {/* ── SECTION 3 — CAPTURE EMAIL + LEVIERS ────────────────────────────── */}
       <section className="px-6 py-16" style={{ backgroundColor: "#F7F9FC" }}>
         <div className="max-w-3xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "#1D9E75", letterSpacing: "2px" }}>
@@ -301,12 +343,83 @@ function ResultatsContent() {
           >
             Vos 3 actions prioritaires
           </h2>
-          <p className="mb-10" style={{ color: "#6B7A99" }}>
+          <p className="mb-8" style={{ color: "#6B7A99" }}>
             Actions concrètes pour combler votre écart de {fmtEuro(Math.max(gap, 0))}/mois.
           </p>
+
+          {/* ── Formulaire de capture (avant soumission) */}
+          {!leadCaptured ? (
+            <div
+              className="rounded-2xl p-7 mb-6"
+              style={{ backgroundColor: "white", border: "2px solid #1D9E75" }}
+            >
+              <h3
+                className="text-xl font-bold mb-2"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#0F1F3D" }}
+              >
+                Recevez votre analyse gratuite
+              </h3>
+              <p className="text-sm mb-5" style={{ color: "#6B7A99", lineHeight: 1.6 }}>
+                Votre pension estimée, votre âge de départ et vos premiers leviers d&apos;action — directement dans votre boîte mail.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder="votre@email.fr"
+                  value={leadEmail}
+                  onChange={(e) => setLeadEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleLeadCapture()}
+                  className="flex-1 rounded-xl px-4 py-3 text-sm outline-none"
+                  style={{ border: "1px solid #E8EDF5", color: "#0F1F3D", backgroundColor: "#F7F9FC" }}
+                />
+                <button
+                  onClick={handleLeadCapture}
+                  disabled={leadLoading}
+                  className="rounded-xl px-6 py-3 text-sm font-semibold text-white whitespace-nowrap"
+                  style={{ backgroundColor: "#1D9E75", opacity: leadLoading ? 0.7 : 1, cursor: leadLoading ? "not-allowed" : "pointer" }}
+                >
+                  {leadLoading ? "Envoi…" : "Recevoir mon analyse →"}
+                </button>
+              </div>
+              {leadError && <p className="text-xs mt-2" style={{ color: "#E53E3E" }}>{leadError}</p>}
+            </div>
+          ) : (
+            /* ── Message post-capture */
+            <div
+              className="rounded-2xl p-5 mb-6 flex items-center gap-4"
+              style={{ backgroundColor: "#E8F5EF", border: "1px solid #1D9E75" }}
+            >
+              <span className="text-2xl">✅</span>
+              <div>
+                <p className="font-semibold text-sm" style={{ color: "#085041" }}>Analyse envoyée !</p>
+                <p className="text-xs mt-0.5" style={{ color: "#0F6E56" }}>
+                  Consultez votre email pour l&apos;analyse complète. Le levier n°1 est débloqué ci-dessous.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* ── Leviers */}
           <div className="space-y-5">
             {r.leviers.map((l, i) => {
+              // Levier 1 : visible après capture, flou avant
               if (i === 0) {
+                if (!leadCaptured) {
+                  return (
+                    <div key={i} className="bg-white rounded-2xl relative overflow-hidden select-none" style={{ border: "1px solid #E8EDF5", minHeight: "100px" }}>
+                      <div className="p-6 flex gap-5" style={{ filter: "blur(5px)", userSelect: "none", pointerEvents: "none" }}>
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 mt-0.5" style={{ backgroundColor: "#1D9E75" }}>1</div>
+                        <div>
+                          <h3 className="font-semibold mb-2" style={{ color: "#0F1F3D" }}>{l.titre}</h3>
+                          <p className="text-sm leading-relaxed" style={{ color: "#6B7A99" }}>{l.detail}</p>
+                        </div>
+                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-2xl">🔒</span>
+                      </div>
+                    </div>
+                  );
+                }
                 return (
                   <div key={i} className="bg-white rounded-2xl p-6 flex gap-5" style={{ border: "1px solid #E8EDF5" }}>
                     <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 mt-0.5" style={{ backgroundColor: "#1D9E75" }}>1</div>
@@ -317,6 +430,7 @@ function ResultatsContent() {
                   </div>
                 );
               }
+              // Levier 2 : titre visible, détail flou
               if (i === 1) {
                 return (
                   <div key={i} className="bg-white rounded-2xl relative overflow-hidden select-none" style={{ border: "1px solid #E8EDF5", minHeight: "110px" }}>
@@ -333,6 +447,7 @@ function ResultatsContent() {
                   </div>
                 );
               }
+              // Levier 3 : entièrement flou
               return (
                 <div key={i} className="bg-white rounded-2xl relative overflow-hidden select-none" style={{ border: "1px solid #E8EDF5", minHeight: "90px" }}>
                   <div className="p-6 flex gap-5" style={{ filter: "blur(5px)", userSelect: "none", pointerEvents: "none" }}>
