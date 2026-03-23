@@ -826,7 +826,7 @@ export default function Home() {
                 <span style={{ color: "#6B7A99", marginLeft: "8px", fontSize: "14px" }}>/ paiement unique</span>
               </div>
               <ul style={{ listStyle: "none", padding: 0, marginBottom: "28px", display: "flex", flexDirection: "column", gap: "12px" }}>
-                {["Tout le diagnostic gratuit", "Rapport PDF détaillé 15 pages", "3 leviers débloqués + chiffrés", "Simulations avec scénarios", "Plan d'action mois par mois"].map((item, i) => (
+                {["Tout le diagnostic de base", "Rapport PDF détaillé de 9 pages", "Simulations avec différents scénarios", "Stratégies épargne personnalisées"].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#0F1F3D" }}>
                     <svg width="18" height="18" fill="none" stroke="#1D9E75" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />

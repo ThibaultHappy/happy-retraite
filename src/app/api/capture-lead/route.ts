@@ -136,7 +136,7 @@ function buildEmailHTML(data: {
     </h2>
     <p style="color:#7A95BB;font-size:14px;line-height:1.6;margin:0 0 24px;">
       Tous vos leviers débloqués · Simulations PER sur 10, 20, 30 ans<br/>
-      Plan d'action mois par mois · PDF professionnel 15 pages
+      Plan d'action mois par mois · PDF professionnel 9 pages
     </p>
     <a href="https://www.happyretraite.fr/resultats"
        style="display:inline-block;background:linear-gradient(to right,#10D98A,#2D9CDB);color:white;padding:16px 36px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;">
