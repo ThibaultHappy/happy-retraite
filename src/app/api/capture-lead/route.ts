@@ -36,7 +36,7 @@ function buildEmailHTML(data: {
   revenu_cible: number;
   gap: number;
 }) {
-  const isExcedent = data.gap <= 0;
+  const isExcedent = data.taux_couverture >= 100;
   const absGap = Math.abs(data.gap);
   const gapColor = isExcedent ? "#1D9E75" : "#E53E3E";
   const gapLabel = isExcedent ? `+${fmtEuro(absGap)}/mois d'excédent` : `-${fmtEuro(absGap)}/mois à combler`;
