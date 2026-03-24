@@ -1,16 +1,36 @@
 // app/blog/retraite-apres-divorce/page.tsx
 
 import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
-export const metadata = {
-  title: "Retraite après divorce : comment le partage impacte vos droits | Happy Retraite",
-  description:
-    "Divorce et retraite : pension de réversion, partage des droits, prestation compensatoire. Ce que le divorce change vraiment pour votre future pension.",
+export const metadata: Metadata = {
+  title: "Retraite après divorce : impact sur vos droits en 2026 | Happy Retraite",
+  description: "Pension de réversion, trimestres famille, prestation compensatoire — ce que le divorce change vraiment pour votre retraite.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-apres-divorce" },
+  openGraph: {
+    title: "Retraite après divorce : impact sur vos droits en 2026 | Happy Retraite",
+    description: "Pension de réversion, trimestres famille, prestation compensatoire — ce que le divorce change vraiment pour votre retraite.",
+    url: "https://www.happyretraite.fr/blog/retraite-apres-divorce",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite après divorce : impact sur vos droits en 2026 | Happy Retraite",
+    description: "Pension de réversion, trimestres famille, prestation compensatoire — ce que le divorce change vraiment pour votre retraite.",
+  },
 };
 
 export default function RetraiteApresDivorce() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
+      <ArticleJsonLd
+        headline="Retraite après divorce : impact sur vos droits en 2026"
+        description="Pension de réversion, trimestres famille, prestation compensatoire — ce que le divorce change vraiment pour votre retraite."
+        url="https://www.happyretraite.fr/blog/retraite-apres-divorce"
+        datePublished="2026-03-14"
+      />
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -194,13 +214,13 @@ export default function RetraiteApresDivorce() {
       <div className="border-t border-gray-100 pt-8 mb-10">
         <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
         <div className="flex flex-col gap-2">
-          <Link href="/blog/trimestres-manquants-solutions" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
             Trimestres manquants : toutes les solutions en 2026 →
           </Link>
           <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
             PER : combien verser selon son âge ? →
           </Link>
-          <Link href="/blog/retraite-progressive-fonctionnaires" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/fonctionnaire-retraite-progressive" className="text-[#1D9E75] hover:underline text-sm">
             Retraite progressive pour les fonctionnaires →
           </Link>
         </div>

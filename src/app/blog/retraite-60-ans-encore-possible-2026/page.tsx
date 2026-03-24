@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
   title: "Retraite à 60 ans : encore possible en 2026 ? | Happy Retraite",
-  description: "Départ anticipé à 60 ans : qui peut encore en bénéficier en 2026 ? Carrière longue, pénibilité, handicap — les conditions exactes expliquées.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Retraite à 60 ans : encore possible en 2026 ?",
-  description: "Départ anticipé à 60 ans : qui peut encore en bénéficier en 2026 ? Carrière longue, pénibilité, handicap — les conditions exactes expliquées.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/retraite-60-ans-encore-possible-2026",
-  datePublished: "2026-03-01",
+  description: "Carrière longue, pénibilité, handicap — les dispositifs qui permettent de partir avant 64 ans en 2026. Conditions et démarches.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-60-ans-encore-possible-2026" },
+  openGraph: {
+    title: "Retraite à 60 ans : encore possible en 2026 ? | Happy Retraite",
+    description: "Carrière longue, pénibilité, handicap — les dispositifs qui permettent de partir avant 64 ans en 2026. Conditions et démarches.",
+    url: "https://www.happyretraite.fr/blog/retraite-60-ans-encore-possible-2026",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite à 60 ans : encore possible en 2026 ? | Happy Retraite",
+    description: "Carrière longue, pénibilité, handicap — les dispositifs qui permettent de partir avant 64 ans en 2026. Conditions et démarches.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="Retraite à 60 ans : encore possible en 2026 ?"
+          description="Carrière longue, pénibilité, handicap — les dispositifs qui permettent de partir avant 64 ans en 2026. Conditions et démarches."
+          url="https://www.happyretraite.fr/blog/retraite-60-ans-encore-possible-2026"
+          datePublished="2026-01-20"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
@@ -120,9 +128,12 @@ export default function ArticlePage() {
             <p style={{ margin: 0, lineHeight: 1.8 }}>Conseil : faites cette vérification avant 58 ans. Si vous êtes proche de l&apos;éligibilité, vous avez encore le temps de racheter des trimestres manquants.</p>
           </GreenBox>
 
-          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px" }}>
+          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
             <p style={{ margin: 0, lineHeight: 1.8 }}>Vous avez des trimestres manquants ? Lisez notre guide sur toutes les solutions disponibles →{" "}
               <Link href="/blog/trimestres-manquants-comment-les-recuperer" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Trimestres manquants : toutes les solutions en 2026</Link>
+            </p>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Rachat de trimestres : est-ce rentable ? →{" "}
+              <Link href="/blog/rachat-trimestres-retraite-rentable" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Rachat de trimestres : est-ce vraiment rentable ?</Link>
             </p>
           </div>
         </div>

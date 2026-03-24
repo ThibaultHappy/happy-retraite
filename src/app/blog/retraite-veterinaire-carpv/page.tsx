@@ -1,16 +1,36 @@
 // app/blog/retraite-veterinaire-carpv/page.tsx
 
 import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
-export const metadata = {
-  title: "Retraite vétérinaire libéral : CARPV, cotisations et le paradoxe fiscal | Happy Retraite",
-  description:
-    "Les vétérinaires libéraux cotisent beaucoup — et touchent souvent moins qu'ils ne l'espèrent. Calcul de pension, cotisations CARPV 2026, stratégies d'optimisation.",
+export const metadata: Metadata = {
+  title: "Retraite vétérinaire libéral : CARPV et paradoxe fiscal | Happy Retraite",
+  description: "Cotisations CARPV 2026, taux de remplacement décevant et 3 leviers pour optimiser la retraite du vétérinaire libéral.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-veterinaire-carpv" },
+  openGraph: {
+    title: "Retraite vétérinaire libéral : CARPV et paradoxe fiscal | Happy Retraite",
+    description: "Cotisations CARPV 2026, taux de remplacement décevant et 3 leviers pour optimiser la retraite du vétérinaire libéral.",
+    url: "https://www.happyretraite.fr/blog/retraite-veterinaire-carpv",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite vétérinaire libéral : CARPV et paradoxe fiscal | Happy Retraite",
+    description: "Cotisations CARPV 2026, taux de remplacement décevant et 3 leviers pour optimiser la retraite du vétérinaire libéral.",
+  },
 };
 
 export default function RetraiteVeterinaireCarPV() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
+      <ArticleJsonLd
+        headline="Retraite vétérinaire libéral : CARPV et paradoxe fiscal"
+        description="Cotisations CARPV 2026, taux de remplacement décevant et 3 leviers pour optimiser la retraite du vétérinaire libéral."
+        url="https://www.happyretraite.fr/blog/retraite-veterinaire-carpv"
+        datePublished="2026-03-10"
+      />
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -248,10 +268,10 @@ export default function RetraiteVeterinaireCarPV() {
           <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
             PER : combien verser selon son âge ? →
           </Link>
-          <Link href="/blog/retraite-micro-entrepreneur" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/retraite-micro-entrepreneur-combien-vais-je-toucher" className="text-[#1D9E75] hover:underline text-sm">
             Retraite micro-entrepreneur : combien vais-je vraiment toucher ? →
           </Link>
-          <Link href="/blog/trimestres-manquants-solutions" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
             Trimestres manquants : toutes les solutions en 2026 →
           </Link>
         </div>

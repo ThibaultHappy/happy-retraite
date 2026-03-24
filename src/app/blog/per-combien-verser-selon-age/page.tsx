@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "PER : combien verser selon son âge pour bien préparer sa retraite ? | Happy Retraite",
-  description: "PER individuel : quel montant verser à 40, 50 ou 55 ans pour compenser une retraite insuffisante ? Simulations chiffrées et stratégie selon profil.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "PER : combien verser selon son âge pour bien préparer sa retraite ?",
-  description: "PER individuel : quel montant verser à 40, 50 ou 55 ans pour compenser une retraite insuffisante ? Simulations chiffrées et stratégie selon profil.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/per-combien-verser-selon-age",
-  datePublished: "2026-03-01",
+  title: "PER : combien verser selon son âge ? Simulations chiffrées | Happy Retraite",
+  description: "PER à 40, 50 et 55 ans : simulations chiffrées pour compenser une retraite insuffisante. Calculs avec déduction fiscale incluse.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/per-combien-verser-selon-age" },
+  openGraph: {
+    title: "PER : combien verser selon son âge ? Simulations chiffrées | Happy Retraite",
+    description: "PER à 40, 50 et 55 ans : simulations chiffrées pour compenser une retraite insuffisante. Calculs avec déduction fiscale incluse.",
+    url: "https://www.happyretraite.fr/blog/per-combien-verser-selon-age",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PER : combien verser selon son âge ? Simulations chiffrées | Happy Retraite",
+    description: "PER à 40, 50 et 55 ans : simulations chiffrées pour compenser une retraite insuffisante. Calculs avec déduction fiscale incluse.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="PER : combien verser selon son âge ? Simulations chiffrées"
+          description="PER à 40, 50 et 55 ans : simulations chiffrées pour compenser une retraite insuffisante. Calculs avec déduction fiscale incluse."
+          url="https://www.happyretraite.fr/blog/per-combien-verser-selon-age"
+          datePublished="2026-02-10"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
@@ -122,6 +130,15 @@ export default function ArticlePage() {
           <GreenBox>
             <p style={{ margin: 0, lineHeight: 1.8 }}>Comment trouver votre plafond disponible : avis d&apos;imposition → case 6QS &quot;Plafond retraite non utilisé&quot;. C&apos;est le montant que vous pouvez déduire en plus du plafond de l&apos;année courante.</p>
           </GreenBox>
+
+          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Êtes-vous indépendant ? Lisez aussi →{" "}
+              <Link href="/blog/retraite-independant-vs-salarie-comparaison" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Retraite indépendant vs salarié : les chiffres qui font mal</Link>
+            </p>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Des trimestres manquants ? Toutes les solutions →{" "}
+              <Link href="/blog/trimestres-manquants-comment-les-recuperer" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Trimestres manquants : toutes les solutions en 2026</Link>
+            </p>
+          </div>
         </div>
 
         {/* Sources */}

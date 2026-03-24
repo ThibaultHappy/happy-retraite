@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
   title: "Rachat de trimestres : est-ce vraiment rentable ? | Happy Retraite",
-  description: "Rachat de trimestres retraite : coût réel, gain sur la pension, délai de rentabilité. On fait le calcul pour vous avant de décider.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Rachat de trimestres : est-ce vraiment rentable ?",
-  description: "Rachat de trimestres retraite : coût réel, gain sur la pension, délai de rentabilité. On fait le calcul pour vous avant de décider.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/rachat-trimestres-retraite-rentable",
-  datePublished: "2026-03-01",
+  description: "Coût réel du rachat, gain sur la pension, délai de récupération — le calcul complet avant de décider. Simulez votre cas.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/rachat-trimestres-retraite-rentable" },
+  openGraph: {
+    title: "Rachat de trimestres : est-ce vraiment rentable ? | Happy Retraite",
+    description: "Coût réel du rachat, gain sur la pension, délai de récupération — le calcul complet avant de décider. Simulez votre cas.",
+    url: "https://www.happyretraite.fr/blog/rachat-trimestres-retraite-rentable",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rachat de trimestres : est-ce vraiment rentable ? | Happy Retraite",
+    description: "Coût réel du rachat, gain sur la pension, délai de récupération — le calcul complet avant de décider. Simulez votre cas.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="Rachat de trimestres : est-ce vraiment rentable ?"
+          description="Coût réel du rachat, gain sur la pension, délai de récupération — le calcul complet avant de décider. Simulez votre cas."
+          url="https://www.happyretraite.fr/blog/rachat-trimestres-retraite-rentable"
+          datePublished="2026-01-25"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>

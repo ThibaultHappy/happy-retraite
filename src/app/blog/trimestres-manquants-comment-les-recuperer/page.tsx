@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "Trimestres manquants à la retraite : toutes les solutions en 2026 | Happy Retraite",
-  description: "Il vous manque des trimestres pour partir à taux plein ? Rachat, périodes assimilées, régularisation — toutes les solutions expliquées.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Trimestres manquants à la retraite : toutes les solutions en 2026",
-  description: "Il vous manque des trimestres pour partir à taux plein ? Rachat, périodes assimilées, régularisation — toutes les solutions expliquées.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/trimestres-manquants-comment-les-recuperer",
-  datePublished: "2026-03-01",
+  title: "Trimestres manquants : toutes les solutions en 2026 | Happy Retraite",
+  description: "Rachat, périodes assimilées, congé parental, chômage — toutes les solutions pour atteindre le taux plein à la retraite.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/trimestres-manquants-comment-les-recuperer" },
+  openGraph: {
+    title: "Trimestres manquants : toutes les solutions en 2026 | Happy Retraite",
+    description: "Rachat, périodes assimilées, congé parental, chômage — toutes les solutions pour atteindre le taux plein à la retraite.",
+    url: "https://www.happyretraite.fr/blog/trimestres-manquants-comment-les-recuperer",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Trimestres manquants : toutes les solutions en 2026 | Happy Retraite",
+    description: "Rachat, périodes assimilées, congé parental, chômage — toutes les solutions pour atteindre le taux plein à la retraite.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="Trimestres manquants : toutes les solutions en 2026"
+          description="Rachat, périodes assimilées, congé parental, chômage — toutes les solutions pour atteindre le taux plein à la retraite."
+          url="https://www.happyretraite.fr/blog/trimestres-manquants-comment-les-recuperer"
+          datePublished="2026-02-01"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
@@ -123,6 +131,15 @@ export default function ArticlePage() {
               <Link href="/blog/rachat-trimestres-retraite-rentable" style={{ color: "#0F6E56", textDecoration: "none", fontWeight: 600 }}>Rachat de trimestres : est-ce vraiment rentable ?</Link>
             </p>
           </GreenBox>
+
+          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Vous pensez à partir avant 64 ans ? →{" "}
+              <Link href="/blog/retraite-60-ans-encore-possible-2026" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Retraite à 60 ans : encore possible en 2026 ?</Link>
+            </p>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Préparer sa retraite avec un PER →{" "}
+              <Link href="/blog/per-combien-verser-selon-age" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>PER : combien verser selon son âge ?</Link>
+            </p>
+          </div>
 
           <H2>Continuer à travailler vs partir avec décote : le vrai calcul</H2>
           <P>Imaginons qu&apos;il vous manque 4 trimestres pour le taux plein et que vous avez 64 ans. Option A — Partir maintenant avec décote : pension de 1 400€ × (1 - 4×0,625%) = 1 365€/mois. Option B — Travailler 1 an de plus : pension de 1 400€/mois + trimestres supplémentaires potentiels. Option C — Partir à 67 ans : taux plein automatique, quelle que soit la durée.</P>

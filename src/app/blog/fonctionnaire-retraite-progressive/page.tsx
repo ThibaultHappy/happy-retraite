@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "Retraite progressive pour les fonctionnaires : mode d'emploi 2026 | Happy Retraite",
-  description: "Retraite progressive dans la fonction publique : conditions, calcul, avantages et pièges. Tout ce qu'il faut savoir avant de faire la demande.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Retraite progressive pour les fonctionnaires : mode d'emploi 2026",
-  description: "Retraite progressive dans la fonction publique : conditions, calcul, avantages et pièges. Tout ce qu'il faut savoir avant de faire la demande.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/fonctionnaire-retraite-progressive",
-  datePublished: "2026-03-01",
+  title: "Retraite progressive fonctionnaire : mode d'emploi 2026 | Happy Retraite",
+  description: "Conditions, calcul de pension provisoire, accord employeur — tout ce qu'un fonctionnaire doit savoir sur la retraite progressive.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/fonctionnaire-retraite-progressive" },
+  openGraph: {
+    title: "Retraite progressive fonctionnaire : mode d'emploi 2026 | Happy Retraite",
+    description: "Conditions, calcul de pension provisoire, accord employeur — tout ce qu'un fonctionnaire doit savoir sur la retraite progressive.",
+    url: "https://www.happyretraite.fr/blog/fonctionnaire-retraite-progressive",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite progressive fonctionnaire : mode d'emploi 2026 | Happy Retraite",
+    description: "Conditions, calcul de pension provisoire, accord employeur — tout ce qu'un fonctionnaire doit savoir sur la retraite progressive.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="Retraite progressive fonctionnaire : mode d'emploi 2026"
+          description="Conditions, calcul de pension provisoire, accord employeur — tout ce qu'un fonctionnaire doit savoir sur la retraite progressive."
+          url="https://www.happyretraite.fr/blog/fonctionnaire-retraite-progressive"
+          datePublished="2026-03-01"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
@@ -123,6 +131,15 @@ export default function ArticlePage() {
           <GreenBox>
             <p style={{ margin: 0, lineHeight: 1.8 }}>Astuce : si votre demande est refusée pour &quot;nécessités de service&quot;, vous pouvez contester devant la commission administrative paritaire (CAP) puis, si nécessaire, devant le tribunal administratif. Le refus doit être motivé.</p>
           </GreenBox>
+
+          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Des trimestres manquants avant de pouvoir partir ? →{" "}
+              <Link href="/blog/trimestres-manquants-comment-les-recuperer" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Trimestres manquants : toutes les solutions en 2026</Link>
+            </p>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Départ anticipé avant 64 ans →{" "}
+              <Link href="/blog/retraite-60-ans-encore-possible-2026" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Retraite à 60 ans : encore possible en 2026 ?</Link>
+            </p>
+          </div>
         </div>
 
         {/* Sources */}

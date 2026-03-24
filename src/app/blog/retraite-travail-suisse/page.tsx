@@ -1,16 +1,36 @@
 // app/blog/retraite-travail-suisse/page.tsx
 
 import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
-export const metadata = {
-  title: "Retraite des Français qui ont travaillé en Suisse : AVS, LPP et droits français | Happy Retraite",
-  description:
-    "Frontalier ou expatrié en Suisse : comment récupérer vos droits AVS et LPP, les coordonner avec votre retraite française, et éviter les pièges de la liquidation.",
+export const metadata: Metadata = {
+  title: "Retraite après travail en Suisse : AVS, LPP et droits français | Happy Retraite",
+  description: "Frontalier ou expatrié en Suisse : comment récupérer vos droits AVS et LPP et les coordonner avec votre retraite française.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-travail-suisse" },
+  openGraph: {
+    title: "Retraite après travail en Suisse : AVS, LPP et droits français | Happy Retraite",
+    description: "Frontalier ou expatrié en Suisse : comment récupérer vos droits AVS et LPP et les coordonner avec votre retraite française.",
+    url: "https://www.happyretraite.fr/blog/retraite-travail-suisse",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite après travail en Suisse : AVS, LPP et droits français | Happy Retraite",
+    description: "Frontalier ou expatrié en Suisse : comment récupérer vos droits AVS et LPP et les coordonner avec votre retraite française.",
+  },
 };
 
 export default function RetraiteTravailSuisse() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
+      <ArticleJsonLd
+        headline="Retraite après travail en Suisse : AVS, LPP et droits français"
+        description="Frontalier ou expatrié en Suisse : comment récupérer vos droits AVS et LPP et les coordonner avec votre retraite française."
+        url="https://www.happyretraite.fr/blog/retraite-travail-suisse"
+        datePublished="2026-03-18"
+      />
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -207,7 +227,7 @@ export default function RetraiteTravailSuisse() {
           <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
             PER : combien verser selon son âge ? →
           </Link>
-          <Link href="/blog/trimestres-manquants-solutions" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
             Trimestres manquants : toutes les solutions en 2026 →
           </Link>
         </div>

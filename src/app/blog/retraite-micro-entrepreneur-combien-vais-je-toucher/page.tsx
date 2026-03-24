@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "Retraite micro-entrepreneur : combien vais-je vraiment toucher ? | Happy Retraite",
-  description: "Calcul concret de la retraite d'un auto-entrepreneur en 2026. Trimestres, pension de base, CIPAV ou régime général : on fait les chiffres pour vous.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Retraite micro-entrepreneur : combien vais-je vraiment toucher ?",
-  description: "Calcul concret de la retraite d'un auto-entrepreneur en 2026. Trimestres, pension de base, CIPAV ou régime général : on fait les chiffres pour vous.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/retraite-micro-entrepreneur-combien-vais-je-toucher",
-  datePublished: "2026-03-01",
+  title: "Retraite micro-entrepreneur : combien vais-je toucher ? | Happy Retraite",
+  description: "Un micro-entrepreneur touche 40% de moins qu'un salarié à revenu égal. Calcul de pension, cotisations SSI et leviers d'optimisation.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-micro-entrepreneur-combien-vais-je-toucher" },
+  openGraph: {
+    title: "Retraite micro-entrepreneur : combien vais-je toucher ? | Happy Retraite",
+    description: "Un micro-entrepreneur touche 40% de moins qu'un salarié à revenu égal. Calcul de pension, cotisations SSI et leviers d'optimisation.",
+    url: "https://www.happyretraite.fr/blog/retraite-micro-entrepreneur-combien-vais-je-toucher",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite micro-entrepreneur : combien vais-je toucher ? | Happy Retraite",
+    description: "Un micro-entrepreneur touche 40% de moins qu'un salarié à revenu égal. Calcul de pension, cotisations SSI et leviers d'optimisation.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="Retraite micro-entrepreneur : combien vais-je toucher ?"
+          description="Un micro-entrepreneur touche 40% de moins qu'un salarié à revenu égal. Calcul de pension, cotisations SSI et leviers d'optimisation."
+          url="https://www.happyretraite.fr/blog/retraite-micro-entrepreneur-combien-vais-je-toucher"
+          datePublished="2026-01-15"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
@@ -133,9 +141,12 @@ export default function ArticlePage() {
             <p style={{ margin: 0, lineHeight: 1.8 }}>Liens utiles : Simuler vos trimestres sur info-retraite.fr — Calculer votre plafond PER sur votre avis d&apos;imposition (case 6QS)</p>
           </GreenBox>
 
-          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px" }}>
+          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
             <p style={{ margin: 0, lineHeight: 1.8 }}>Pour aller plus loin, lisez notre article sur le rachat de trimestres : est-ce vraiment rentable ? →{" "}
               <Link href="/blog/rachat-trimestres-retraite-rentable" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Rachat de trimestres : est-ce vraiment rentable ?</Link>
+            </p>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Comparez avec les autres statuts d&apos;indépendant →{" "}
+              <Link href="/blog/retraite-independant-vs-salarie-comparaison" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Retraite indépendant vs salarié : les chiffres qui font mal</Link>
             </p>
           </div>
         </div>

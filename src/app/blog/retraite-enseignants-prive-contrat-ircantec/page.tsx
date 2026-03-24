@@ -1,16 +1,36 @@
 // app/blog/retraite-enseignants-prive-contrat-ircantec/page.tsx
 
 import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
-export const metadata = {
-  title: "Retraite des enseignants du privé sous contrat : IRCANTEC et droits méconnus | Happy Retraite",
-  description:
-    "Enseignant du privé sous contrat avec l'État : vous cotisez à l'IRCANTEC, pas à l'AGIRC-ARRCO. Un régime méconnu avec des règles spécifiques — et des droits souvent sous-estimés.",
+export const metadata: Metadata = {
+  title: "Retraite enseignants privé sous contrat : IRCANTEC expliqué | Happy Retraite",
+  description: "Enseignant du privé sous contrat : vous cotisez à l'IRCANTEC, pas à l'AGIRC-ARRCO. Droits, calcul de pension, leviers 2026.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-enseignants-prive-contrat-ircantec" },
+  openGraph: {
+    title: "Retraite enseignants privé sous contrat : IRCANTEC expliqué | Happy Retraite",
+    description: "Enseignant du privé sous contrat : vous cotisez à l'IRCANTEC, pas à l'AGIRC-ARRCO. Droits, calcul de pension, leviers 2026.",
+    url: "https://www.happyretraite.fr/blog/retraite-enseignants-prive-contrat-ircantec",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite enseignants privé sous contrat : IRCANTEC expliqué | Happy Retraite",
+    description: "Enseignant du privé sous contrat : vous cotisez à l'IRCANTEC, pas à l'AGIRC-ARRCO. Droits, calcul de pension, leviers 2026.",
+  },
 };
 
 export default function RetraiteEnseignantsPriveContrat() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
+      <ArticleJsonLd
+        headline="Retraite enseignants privé sous contrat : IRCANTEC expliqué"
+        description="Enseignant du privé sous contrat : vous cotisez à l'IRCANTEC, pas à l'AGIRC-ARRCO. Droits, calcul de pension, leviers 2026."
+        url="https://www.happyretraite.fr/blog/retraite-enseignants-prive-contrat-ircantec"
+        datePublished="2026-03-20"
+      />
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -218,13 +238,13 @@ export default function RetraiteEnseignantsPriveContrat() {
       <div className="border-t border-gray-100 pt-8 mb-10">
         <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
         <div className="flex flex-col gap-2">
-          <Link href="/blog/retraite-progressive-fonctionnaires" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/fonctionnaire-retraite-progressive" className="text-[#1D9E75] hover:underline text-sm">
             Retraite progressive pour les fonctionnaires : mode d'emploi →
           </Link>
           <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
             PER : combien verser selon son âge ? →
           </Link>
-          <Link href="/blog/trimestres-manquants-solutions" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
             Trimestres manquants : toutes les solutions en 2026 →
           </Link>
         </div>

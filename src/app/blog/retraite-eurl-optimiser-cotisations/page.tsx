@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "Retraite en EURL : comment optimiser ses cotisations sans se tromper | Happy Retraite",
-  description: "Gérant d'EURL : rémunération ou dividendes, cotisations retraite, PER TNS — le vrai calcul pour préparer sa retraite tout en optimisant sa fiscalité.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Retraite en EURL : comment optimiser ses cotisations sans se tromper",
-  description: "Gérant d'EURL : rémunération ou dividendes, cotisations retraite, PER TNS — le vrai calcul pour préparer sa retraite tout en optimisant sa fiscalité.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/retraite-eurl-optimiser-cotisations",
-  datePublished: "2026-03-01",
+  title: "Retraite en EURL : optimiser ses cotisations sans se tromper | Happy Retraite",
+  description: "Rémunération ou dividendes en EURL ? Le calcul complet pour maximiser sa retraite tout en optimisant sa fiscalité.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-eurl-optimiser-cotisations" },
+  openGraph: {
+    title: "Retraite en EURL : optimiser ses cotisations sans se tromper | Happy Retraite",
+    description: "Rémunération ou dividendes en EURL ? Le calcul complet pour maximiser sa retraite tout en optimisant sa fiscalité.",
+    url: "https://www.happyretraite.fr/blog/retraite-eurl-optimiser-cotisations",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite en EURL : optimiser ses cotisations sans se tromper | Happy Retraite",
+    description: "Rémunération ou dividendes en EURL ? Le calcul complet pour maximiser sa retraite tout en optimisant sa fiscalité.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="Retraite en EURL : optimiser ses cotisations sans se tromper"
+          description="Rémunération ou dividendes en EURL ? Le calcul complet pour maximiser sa retraite tout en optimisant sa fiscalité."
+          url="https://www.happyretraite.fr/blog/retraite-eurl-optimiser-cotisations"
+          datePublished="2026-02-20"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>

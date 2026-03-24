@@ -1,29 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "CARMF retraite : le guide complet pour les médecins libéraux en 2026",
-  description:
-    "Retraite CARMF pour médecins libéraux : cotisations, calcul de la pension, ASV, âge de départ. Tout ce que les médecins doivent savoir en 2026.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "CARMF retraite : le guide complet pour les médecins libéraux en 2026",
-  description:
-    "Retraite CARMF pour médecins libéraux : cotisations, calcul de la pension, ASV, âge de départ. Tout ce que les médecins doivent savoir en 2026.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: {
-    "@type": "Organization",
-    name: "Happy Retraite",
-    url: "https://www.happyretraite.fr",
+  title: "CARMF retraite : guide complet pour médecins libéraux | Happy Retraite",
+  description: "4 régimes CARMF, cotisations 2026, calcul de pension et stratégies d'optimisation pour les médecins libéraux. Guide complet.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/carmf-retraite-medecins-liberaux-guide" },
+  openGraph: {
+    title: "CARMF retraite : guide complet pour médecins libéraux | Happy Retraite",
+    description: "4 régimes CARMF, cotisations 2026, calcul de pension et stratégies d'optimisation pour les médecins libéraux. Guide complet.",
+    url: "https://www.happyretraite.fr/blog/carmf-retraite-medecins-liberaux-guide",
+    siteName: "Happy Retraite",
+    type: "article",
   },
-  url: "https://www.happyretraite.fr/blog/carmf-retraite-medecins-liberaux-guide",
-  datePublished: "2026-03-01",
+  twitter: {
+    card: "summary_large_image",
+    title: "CARMF retraite : guide complet pour médecins libéraux | Happy Retraite",
+    description: "4 régimes CARMF, cotisations 2026, calcul de pension et stratégies d'optimisation pour les médecins libéraux. Guide complet.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -81,7 +78,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="CARMF retraite : guide complet pour médecins libéraux"
+          description="4 régimes CARMF, cotisations 2026, calcul de pension et stratégies d'optimisation pour les médecins libéraux. Guide complet."
+          url="https://www.happyretraite.fr/blog/carmf-retraite-medecins-liberaux-guide"
+          datePublished="2026-03-05"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>

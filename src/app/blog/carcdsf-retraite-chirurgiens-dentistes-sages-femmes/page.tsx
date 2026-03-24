@@ -1,30 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "CARCDSF retraite : le guide pour chirurgiens-dentistes et sages-femmes libérales",
-  description:
-    "Retraite CARCDSF pour chirurgiens-dentistes et sages-femmes : cotisations 2026, calcul de la pension, ASV, optimisation. Le guide complet.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline:
-    "CARCDSF retraite : le guide pour chirurgiens-dentistes et sages-femmes libérales",
-  description:
-    "Retraite CARCDSF pour chirurgiens-dentistes et sages-femmes : cotisations 2026, calcul de la pension, ASV, optimisation. Le guide complet.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: {
-    "@type": "Organization",
-    name: "Happy Retraite",
-    url: "https://www.happyretraite.fr",
+  title: "CARCDSF retraite : guide chirurgiens-dentistes et sages-femmes | Happy Retraite",
+  description: "Cotisations CARCDSF, calcul de pension, paradoxe des hauts revenus — tout ce que les affiliés CARCDSF doivent savoir en 2026.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/carcdsf-retraite-chirurgiens-dentistes-sages-femmes" },
+  openGraph: {
+    title: "CARCDSF retraite : guide chirurgiens-dentistes et sages-femmes | Happy Retraite",
+    description: "Cotisations CARCDSF, calcul de pension, paradoxe des hauts revenus — tout ce que les affiliés CARCDSF doivent savoir en 2026.",
+    url: "https://www.happyretraite.fr/blog/carcdsf-retraite-chirurgiens-dentistes-sages-femmes",
+    siteName: "Happy Retraite",
+    type: "article",
   },
-  url: "https://www.happyretraite.fr/blog/carcdsf-retraite-chirurgiens-dentistes-sages-femmes",
-  datePublished: "2026-03-01",
+  twitter: {
+    card: "summary_large_image",
+    title: "CARCDSF retraite : guide chirurgiens-dentistes et sages-femmes | Happy Retraite",
+    description: "Cotisations CARCDSF, calcul de pension, paradoxe des hauts revenus — tout ce que les affiliés CARCDSF doivent savoir en 2026.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -82,7 +78,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="CARCDSF retraite : guide chirurgiens-dentistes et sages-femmes"
+          description="Cotisations CARCDSF, calcul de pension, paradoxe des hauts revenus — tout ce que les affiliés CARCDSF doivent savoir en 2026."
+          url="https://www.happyretraite.fr/blog/carcdsf-retraite-chirurgiens-dentistes-sages-femmes"
+          datePublished="2026-03-08"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>

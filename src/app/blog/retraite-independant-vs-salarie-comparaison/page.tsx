@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
   title: "Retraite indépendant vs salarié : les chiffres qui font mal | Happy Retraite",
-  description: "À revenu égal, un indépendant touche en moyenne 40% de moins qu'un salarié à la retraite. Voici pourquoi — et comment compenser.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Retraite indépendant vs salarié : les chiffres qui font mal",
-  description: "À revenu égal, un indépendant touche en moyenne 40% de moins qu'un salarié à la retraite. Voici pourquoi — et comment compenser.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/retraite-independant-vs-salarie-comparaison",
-  datePublished: "2026-03-01",
+  description: "À revenu égal, les indépendants touchent 40% de moins à la retraite. Pourquoi — et comment compenser cet écart structurel.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-independant-vs-salarie-comparaison" },
+  openGraph: {
+    title: "Retraite indépendant vs salarié : les chiffres qui font mal | Happy Retraite",
+    description: "À revenu égal, les indépendants touchent 40% de moins à la retraite. Pourquoi — et comment compenser cet écart structurel.",
+    url: "https://www.happyretraite.fr/blog/retraite-independant-vs-salarie-comparaison",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite indépendant vs salarié : les chiffres qui font mal | Happy Retraite",
+    description: "À revenu égal, les indépendants touchent 40% de moins à la retraite. Pourquoi — et comment compenser cet écart structurel.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="Retraite indépendant vs salarié : les chiffres qui font mal"
+          description="À revenu égal, les indépendants touchent 40% de moins à la retraite. Pourquoi — et comment compenser cet écart structurel."
+          url="https://www.happyretraite.fr/blog/retraite-independant-vs-salarie-comparaison"
+          datePublished="2026-02-05"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>

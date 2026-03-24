@@ -1,16 +1,36 @@
 // app/blog/retraite-pharmacien-cavp/page.tsx
 
 import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
-export const metadata = {
-  title: "Retraite pharmacien : CAVP, cotisations 2026 et le choc du taux de remplacement | Happy Retraite",
-  description:
-    "Les pharmaciens libéraux cotisent à la CAVP. Résultat : un taux de remplacement souvent inférieur à 30%. Calcul de pension, cotisations, stratégies d'optimisation.",
+export const metadata: Metadata = {
+  title: "Retraite pharmacien CAVP : taux de remplacement et leviers | Happy Retraite",
+  description: "Les pharmaciens libéraux touchent souvent moins de 35% de leurs revenus à la retraite. CAVP, ASV, PER : le guide complet 2026.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-pharmacien-cavp" },
+  openGraph: {
+    title: "Retraite pharmacien CAVP : taux de remplacement et leviers | Happy Retraite",
+    description: "Les pharmaciens libéraux touchent souvent moins de 35% de leurs revenus à la retraite. CAVP, ASV, PER : le guide complet 2026.",
+    url: "https://www.happyretraite.fr/blog/retraite-pharmacien-cavp",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite pharmacien CAVP : taux de remplacement et leviers | Happy Retraite",
+    description: "Les pharmaciens libéraux touchent souvent moins de 35% de leurs revenus à la retraite. CAVP, ASV, PER : le guide complet 2026.",
+  },
 };
 
 export default function RetraitePharmacienCavp() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
+      <ArticleJsonLd
+        headline="Retraite pharmacien CAVP : taux de remplacement et leviers"
+        description="Les pharmaciens libéraux touchent souvent moins de 35% de leurs revenus à la retraite. CAVP, ASV, PER : le guide complet 2026."
+        url="https://www.happyretraite.fr/blog/retraite-pharmacien-cavp"
+        datePublished="2026-03-16"
+      />
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -259,10 +279,10 @@ export default function RetraitePharmacienCavp() {
           <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
             PER : combien verser selon son âge ? →
           </Link>
-          <Link href="/blog/carmf-retraite-medecins-liberaux" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/carmf-retraite-medecins-liberaux-guide" className="text-[#1D9E75] hover:underline text-sm">
             Retraite médecin libéral : guide CARMF complet →
           </Link>
-          <Link href="/blog/rachat-trimestres-rentable" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/rachat-trimestres-retraite-rentable" className="text-[#1D9E75] hover:underline text-sm">
             Rachat de trimestres : est-ce vraiment rentable ? →
           </Link>
         </div>

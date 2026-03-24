@@ -1,16 +1,36 @@
 // app/blog/retraite-francais-expatries/page.tsx
 
 import Link from "next/link";
+import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
-export const metadata = {
-  title: "Retraite des Français expatriés : comment récupérer vos droits | Happy Retraite",
-  description:
-    "Travailler à l'étranger impacte directement vos droits retraite français. Accords bilatéraux, CFE, trimestres à l'étranger : le guide complet 2026.",
+export const metadata: Metadata = {
+  title: "Retraite des Français expatriés : récupérer vos droits | Happy Retraite",
+  description: "Accords bilatéraux, CFE, trimestres à l'étranger — le guide complet pour ne pas perdre vos droits retraite français en 2026.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/retraite-francais-expatries" },
+  openGraph: {
+    title: "Retraite des Français expatriés : récupérer vos droits | Happy Retraite",
+    description: "Accords bilatéraux, CFE, trimestres à l'étranger — le guide complet pour ne pas perdre vos droits retraite français en 2026.",
+    url: "https://www.happyretraite.fr/blog/retraite-francais-expatries",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retraite des Français expatriés : récupérer vos droits | Happy Retraite",
+    description: "Accords bilatéraux, CFE, trimestres à l'étranger — le guide complet pour ne pas perdre vos droits retraite français en 2026.",
+  },
 };
 
 export default function RetraiteExpatries() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
+      <ArticleJsonLd
+        headline="Retraite des Français expatriés : récupérer vos droits"
+        description="Accords bilatéraux, CFE, trimestres à l'étranger — le guide complet pour ne pas perdre vos droits retraite français en 2026."
+        url="https://www.happyretraite.fr/blog/retraite-francais-expatries"
+        datePublished="2026-03-12"
+      />
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -203,13 +223,13 @@ export default function RetraiteExpatries() {
       <div className="border-t border-gray-100 pt-8 mb-10">
         <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
         <div className="flex flex-col gap-2">
-          <Link href="/blog/trimestres-manquants-solutions" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
             Trimestres manquants : toutes les solutions en 2026 →
           </Link>
           <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
             PER : combien verser selon son âge ? →
           </Link>
-          <Link href="/blog/rachat-trimestres-rentable" className="text-[#1D9E75] hover:underline text-sm">
+          <Link href="/blog/rachat-trimestres-retraite-rentable" className="text-[#1D9E75] hover:underline text-sm">
             Rachat de trimestres : est-ce vraiment rentable ? →
           </Link>
         </div>

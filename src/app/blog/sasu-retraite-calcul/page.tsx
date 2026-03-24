@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "SASU et retraite : le calcul que personne ne fait (et qui change tout) | Happy Retraite",
-  description: "Président de SASU assimilé-salarié : cotisations retraite, points AGIRC-ARRCO, comparaison avec l'EURL. Le vrai calcul pour ne pas se retrouver sans retraite.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "SASU et retraite : le calcul que personne ne fait (et qui change tout)",
-  description: "Président de SASU assimilé-salarié : cotisations retraite, points AGIRC-ARRCO, comparaison avec l'EURL. Le vrai calcul pour ne pas se retrouver sans retraite.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/sasu-retraite-calcul",
-  datePublished: "2026-03-01",
+  title: "SASU et retraite : le calcul que personne ne fait | Happy Retraite",
+  description: "Les dividendes SASU ne cotisent pas pour la retraite. Conséquences chiffrées et stratégies pour éviter le choc à la liquidation.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/sasu-retraite-calcul" },
+  openGraph: {
+    title: "SASU et retraite : le calcul que personne ne fait | Happy Retraite",
+    description: "Les dividendes SASU ne cotisent pas pour la retraite. Conséquences chiffrées et stratégies pour éviter le choc à la liquidation.",
+    url: "https://www.happyretraite.fr/blog/sasu-retraite-calcul",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SASU et retraite : le calcul que personne ne fait | Happy Retraite",
+    description: "Les dividendes SASU ne cotisent pas pour la retraite. Conséquences chiffrées et stratégies pour éviter le choc à la liquidation.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="SASU et retraite : le calcul que personne ne fait"
+          description="Les dividendes SASU ne cotisent pas pour la retraite. Conséquences chiffrées et stratégies pour éviter le choc à la liquidation."
+          url="https://www.happyretraite.fr/blog/sasu-retraite-calcul"
+          datePublished="2026-02-25"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>

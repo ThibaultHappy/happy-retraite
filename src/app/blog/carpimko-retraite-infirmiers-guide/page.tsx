@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
 
 export const metadata: Metadata = {
-  title: "CARPIMKO retraite : tout ce que les infirmiers libéraux doivent savoir | Happy Retraite",
-  description: "Retraite CARPIMKO pour infirmiers libéraux : cotisations, calcul de la pension, âge de départ, invalidité. Le guide complet 2026.",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "CARPIMKO retraite : tout ce que les infirmiers libéraux doivent savoir",
-  description: "Retraite CARPIMKO pour infirmiers libéraux : cotisations, calcul de la pension, âge de départ, invalidité. Le guide complet 2026.",
-  author: { "@type": "Organization", name: "Happy Retraite" },
-  publisher: { "@type": "Organization", name: "Happy Retraite", url: "https://www.happyretraite.fr" },
-  url: "https://www.happyretraite.fr/blog/carpimko-retraite-infirmiers-guide",
-  datePublished: "2026-03-01",
+  title: "CARPIMKO retraite : guide complet pour infirmiers libéraux | Happy Retraite",
+  description: "Cotisations, points CARPIMKO, calcul de pension et stratégies d'optimisation pour infirmiers et paramédicaux libéraux. Guide 2026.",
+  alternates: { canonical: "https://www.happyretraite.fr/blog/carpimko-retraite-infirmiers-guide" },
+  openGraph: {
+    title: "CARPIMKO retraite : guide complet pour infirmiers libéraux | Happy Retraite",
+    description: "Cotisations, points CARPIMKO, calcul de pension et stratégies d'optimisation pour infirmiers et paramédicaux libéraux. Guide 2026.",
+    url: "https://www.happyretraite.fr/blog/carpimko-retraite-infirmiers-guide",
+    siteName: "Happy Retraite",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CARPIMKO retraite : guide complet pour infirmiers libéraux | Happy Retraite",
+    description: "Cotisations, points CARPIMKO, calcul de pension et stratégies d'optimisation pour infirmiers et paramédicaux libéraux. Guide 2026.",
+  },
 };
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -63,7 +66,12 @@ export default function ArticlePage() {
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-6 py-16">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <ArticleJsonLd
+          headline="CARPIMKO retraite : guide complet pour infirmiers libéraux"
+          description="Cotisations, points CARPIMKO, calcul de pension et stratégies d'optimisation pour infirmiers et paramédicaux libéraux. Guide 2026."
+          url="https://www.happyretraite.fr/blog/carpimko-retraite-infirmiers-guide"
+          datePublished="2026-02-15"
+        />
 
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
@@ -124,6 +132,15 @@ export default function ArticlePage() {
           <GreenBox>
             <p style={{ margin: 0, lineHeight: 1.8 }}>Action prioritaire : connectez-vous sur info-retraite.fr et vérifiez que toutes vos années en libéral sont bien enregistrées. Contactez la CARPIMKO si des anomalies apparaissent (carpimko.com, 01 40 68 32 00).</p>
           </GreenBox>
+
+          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Préparer sa retraite avec un PER →{" "}
+              <Link href="/blog/per-combien-verser-selon-age" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>PER : combien verser selon son âge ?</Link>
+            </p>
+            <p style={{ margin: 0, lineHeight: 1.8 }}>Rachat de trimestres pour vos années d&apos;IFSI →{" "}
+              <Link href="/blog/rachat-trimestres-retraite-rentable" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Rachat de trimestres : est-ce vraiment rentable ?</Link>
+            </p>
+          </div>
         </div>
 
         {/* Sources */}
