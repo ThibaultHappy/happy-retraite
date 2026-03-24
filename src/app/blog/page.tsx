@@ -122,6 +122,20 @@ const articles = [
     badge: "Professions libérales",
     temps: "8 min",
   },
+  {
+    slug: "retraite-travail-suisse",
+    titre: "Retraite des Français qui ont travaillé en Suisse : AVS, LPP et droits français",
+    desc: "Frontalier ou expatrié en Suisse : comment récupérer vos droits AVS et LPP, les coordonner avec la retraite française.",
+    badge: "Expatrié",
+    temps: "9 min",
+  },
+  {
+    slug: "retraite-enseignants-prive-contrat-ircantec",
+    titre: "Retraite des enseignants du privé sous contrat : IRCANTEC et droits méconnus",
+    desc: "Ni fonctionnaire, ni salarié classique — l'enseignant du privé sous contrat cotise à l'IRCANTEC. Un régime méconnu aux règles spécifiques.",
+    badge: "Statut particulier",
+    temps: "8 min",
+  },
 ];
 
 const badgeColors: Record<string, { bg: string; color: string }> = {
@@ -134,6 +148,7 @@ const badgeColors: Record<string, { bg: string; color: string }> = {
   "Fonctionnaire": { bg: "#FFF1F2", color: "#9F1239" },
   "Expatrié": { bg: "#EFF6FF", color: "#1D4ED8" },
   "Situations de vie": { bg: "#FAF5FF", color: "#7E22CE" },
+  "Statut particulier": { bg: "#FFF7ED", color: "#C2410C" },
 };
 
 export default function BlogIndexPage() {
