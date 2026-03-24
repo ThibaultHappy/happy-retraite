@@ -94,6 +94,34 @@ const articles = [
     badge: "Professions libérales",
     temps: "8 min",
   },
+  {
+    slug: "retraite-veterinaire-carpv",
+    titre: "Retraite vétérinaire libéral : CARPV, cotisations et le paradoxe fiscal",
+    desc: "Des cotisations significatives, un taux de remplacement souvent décevant. Calcul de pension CARPV et stratégies d'optimisation.",
+    badge: "Professions libérales",
+    temps: "8 min",
+  },
+  {
+    slug: "retraite-francais-expatries",
+    titre: "Retraite des Français expatriés : comment récupérer vos droits",
+    desc: "Accords bilatéraux, CFE, trimestres à l'étranger — le guide complet pour ne pas perdre vos droits retraite français.",
+    badge: "Expatrié",
+    temps: "9 min",
+  },
+  {
+    slug: "retraite-apres-divorce",
+    titre: "Retraite après divorce : ce que le partage change vraiment",
+    desc: "Pension de réversion, trimestres famille, prestation compensatoire — tout ce qu'un divorcé doit savoir pour sa retraite.",
+    badge: "Situations de vie",
+    temps: "7 min",
+  },
+  {
+    slug: "retraite-pharmacien-cavp",
+    titre: "Retraite pharmacien : CAVP, cotisations 2026 et taux de remplacement",
+    desc: "Les pharmaciens libéraux cotisent beaucoup — et touchent souvent moins de 35% de leurs revenus. Décryptage et leviers.",
+    badge: "Professions libérales",
+    temps: "8 min",
+  },
 ];
 
 const badgeColors: Record<string, { bg: string; color: string }> = {
@@ -104,6 +132,8 @@ const badgeColors: Record<string, { bg: string; color: string }> = {
   "Épargne retraite": { bg: "#F0F9FF", color: "#0369A1" },
   "Professions libérales": { bg: "#FDF4FF", color: "#86198F" },
   "Fonctionnaire": { bg: "#FFF1F2", color: "#9F1239" },
+  "Expatrié": { bg: "#EFF6FF", color: "#1D4ED8" },
+  "Situations de vie": { bg: "#FAF5FF", color: "#7E22CE" },
 };
 
 export default function BlogIndexPage() {
