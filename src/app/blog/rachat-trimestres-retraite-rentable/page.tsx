@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid, BlogCTAFinal } from "@/components/BlogCTA";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
@@ -57,7 +59,7 @@ export default function ArticlePage() {
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <Link href="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Blog</Link>
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Contact</Link>
-            <Link href="/diagnostic" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
+            <Link href="/diagnostic/intro" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
               Commencer gratuitement
             </Link>
           </div>
@@ -100,6 +102,7 @@ export default function ArticlePage() {
           </InfoBox>
 
           <H2>Combien ça coûte réellement ?</H2>
+          <BlogCTAMid context="votre situation de retraite" />
           <P>Le coût d&apos;un trimestre racheté dépend de deux facteurs : votre âge au moment du rachat et votre revenu annuel moyen des 3 dernières années.</P>
           <P>Barème simplifié pour un revenu de 40 000€ brut annuel : à 40 ans ≈ 1 800€/trimestre — à 45 ans ≈ 2 400€/trimestre — à 50 ans ≈ 3 200€/trimestre — à 55 ans ≈ 4 100€/trimestre</P>
           <P>Pour 4 trimestres rachetés à 45 ans avec 40 000€ de revenu : environ 9 600€. Ce montant est déductible de votre revenu imposable (économie fiscale de ~2 900€ à 30% TMI, ~3 900€ à 41%).</P>
@@ -139,11 +142,7 @@ export default function ArticlePage() {
             <p style={{ margin: 0, lineHeight: 1.8 }}>Conseil clé : si vous envisagez de racheter, faites-le le plus tôt possible. Le coût augmente significativement avec l&apos;âge.</p>
           </GreenBox>
 
-          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px" }}>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Vous avez identifié des trimestres manquants ? Découvrez toutes les solutions possibles →{" "}
-              <Link href="/blog/trimestres-manquants-comment-les-recuperer" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Trimestres manquants : toutes les solutions en 2026</Link>
-            </p>
-          </div>
+          <RelatedArticles currentSlug="rachat-trimestres-retraite-rentable" />
         </div>
 
         {/* Sources */}
@@ -159,21 +158,7 @@ export default function ArticlePage() {
           </p>
         </div>
 
-        {/* CTA Final */}
-        <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
-          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>
-            Calculez votre retraite en 2 minutes
-          </h2>
-          <p style={{ color: "#7A95BB", fontSize: "15px", marginBottom: "28px", lineHeight: 1.6 }}>
-            Diagnostic gratuit et personnalisé selon votre statut et votre situation.
-          </p>
-          <Link
-            href="/diagnostic"
-            style={{ display: "inline-block", background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "16px 40px", borderRadius: "12px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}
-          >
-            Faire mon diagnostic gratuit →
-          </Link>
-        </div>
+        <BlogCTAFinal />
       </article>
 
       {/* Footer */}

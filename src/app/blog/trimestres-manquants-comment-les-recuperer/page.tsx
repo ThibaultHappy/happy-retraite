@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid, BlogCTAFinal } from "@/components/BlogCTA";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
@@ -57,7 +59,7 @@ export default function ArticlePage() {
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <Link href="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Blog</Link>
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Contact</Link>
-            <Link href="/diagnostic" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
+            <Link href="/diagnostic/intro" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
               Commencer gratuitement
             </Link>
           </div>
@@ -101,6 +103,7 @@ export default function ArticlePage() {
           </InfoBox>
 
           <H2>Les trimestres &quot;gratuits&quot; souvent ignorés</H2>
+          <BlogCTAMid context="votre situation de retraite" />
           <H3>Le chômage indemnisé</H3>
           <P>Chaque période d&apos;allocation chômage (ARE) valide des trimestres : 50 jours indemnisés = 1 trimestre (dans la limite de 4 par an). Ces trimestres doivent apparaître sur votre RIS — s&apos;ils manquent, contactez Pôle Emploi.</P>
           <H3>L&apos;arrêt maladie longue durée</H3>
@@ -132,14 +135,7 @@ export default function ArticlePage() {
             </p>
           </GreenBox>
 
-          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Vous pensez à partir avant 64 ans ? →{" "}
-              <Link href="/blog/retraite-60-ans-encore-possible-2026" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Retraite à 60 ans : encore possible en 2026 ?</Link>
-            </p>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Préparer sa retraite avec un PER →{" "}
-              <Link href="/blog/per-combien-verser-selon-age" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>PER : combien verser selon son âge ?</Link>
-            </p>
-          </div>
+          <RelatedArticles currentSlug="trimestres-manquants-comment-les-recuperer" />
 
           <H2>Continuer à travailler vs partir avec décote : le vrai calcul</H2>
           <P>Imaginons qu&apos;il vous manque 4 trimestres pour le taux plein et que vous avez 64 ans. Option A — Partir maintenant avec décote : pension de 1 400€ × (1 - 4×0,625%) = 1 365€/mois. Option B — Travailler 1 an de plus : pension de 1 400€/mois + trimestres supplémentaires potentiels. Option C — Partir à 67 ans : taux plein automatique, quelle que soit la durée.</P>
@@ -162,21 +158,7 @@ export default function ArticlePage() {
           </p>
         </div>
 
-        {/* CTA Final */}
-        <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
-          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>
-            Calculez votre retraite en 2 minutes
-          </h2>
-          <p style={{ color: "#7A95BB", fontSize: "15px", marginBottom: "28px", lineHeight: 1.6 }}>
-            Diagnostic gratuit et personnalisé selon votre statut et votre situation.
-          </p>
-          <Link
-            href="/diagnostic"
-            style={{ display: "inline-block", background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "16px 40px", borderRadius: "12px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}
-          >
-            Faire mon diagnostic gratuit →
-          </Link>
-        </div>
+        <BlogCTAFinal />
       </article>
 
       {/* Footer */}

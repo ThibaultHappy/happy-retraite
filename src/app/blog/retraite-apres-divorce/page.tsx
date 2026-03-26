@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid } from "@/components/BlogCTA";
 
 export const metadata: Metadata = {
   title: "Retraite après divorce : impact sur vos droits en 2026 | Happy Retraite",
@@ -67,6 +69,7 @@ export default function RetraiteApresDivorce() {
       <h2 className="text-2xl font-bold text-[#0F1F3D] mt-10 mb-4">
         La pension de réversion après divorce : les règles précises
       </h2>
+      <BlogCTAMid context="votre situation de retraite" />
       <p className="text-gray-700 mb-4">
         La <strong>pension de réversion</strong> est versée au conjoint survivant après le décès du retraité. En cas de divorce, les règles diffèrent selon le régime :
       </p>
@@ -210,21 +213,7 @@ export default function RetraiteApresDivorce() {
         </ol>
       </div>
 
-      {/* Internal links */}
-      <div className="border-t border-gray-100 pt-8 mb-10">
-        <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
-        <div className="flex flex-col gap-2">
-          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
-            Trimestres manquants : toutes les solutions en 2026 →
-          </Link>
-          <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
-            PER : combien verser selon son âge ? →
-          </Link>
-          <Link href="/blog/fonctionnaire-retraite-progressive" className="text-[#1D9E75] hover:underline text-sm">
-            Retraite progressive pour les fonctionnaires →
-          </Link>
-        </div>
-      </div>
+      <RelatedArticles currentSlug="retraite-apres-divorce" />
 
       {/* Sources */}
       <div className="text-sm text-gray-400 mb-10 space-y-1">
@@ -245,7 +234,7 @@ export default function RetraiteApresDivorce() {
           Diagnostic gratuit et personnalisé selon votre statut et votre situation.
         </p>
         <Link
-          href="/diagnostic"
+          href="/diagnostic/intro"
           className="inline-block bg-gradient-to-r from-[#10D98A] to-[#2D9CDB] text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition"
         >
           Faire mon diagnostic gratuit →

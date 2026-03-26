@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid, BlogCTAFinal } from "@/components/BlogCTA";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
@@ -57,7 +59,7 @@ export default function ArticlePage() {
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <Link href="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Blog</Link>
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Contact</Link>
-            <Link href="/diagnostic" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
+            <Link href="/diagnostic/intro" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
               Commencer gratuitement
             </Link>
           </div>
@@ -97,6 +99,7 @@ export default function ArticlePage() {
           </InfoBox>
 
           <H2>Comment fonctionne la cotisation retraite en micro-entreprise</H2>
+          <BlogCTAMid context="votre situation de retraite" />
           <H3>Ce que vous payez réellement</H3>
           <P>En micro-entreprise, les cotisations sociales sont prélevées directement sur votre CA, pas sur votre bénéfice. Le taux global (incluant retraite de base et complémentaire) dépend de votre activité : Vente de marchandises : ~12,3% — Prestations de services BIC : ~21,2% — Professions libérales (CIPAV) : ~22,2%</P>
           <P>Ces cotisations incluent la retraite de base et complémentaire, mais à des niveaux bien inférieurs à ceux d&apos;un salarié.</P>
@@ -141,14 +144,7 @@ export default function ArticlePage() {
             <p style={{ margin: 0, lineHeight: 1.8 }}>Liens utiles : Simuler vos trimestres sur info-retraite.fr — Calculer votre plafond PER sur votre avis d&apos;imposition (case 6QS)</p>
           </GreenBox>
 
-          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Pour aller plus loin, lisez notre article sur le rachat de trimestres : est-ce vraiment rentable ? →{" "}
-              <Link href="/blog/rachat-trimestres-retraite-rentable" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Rachat de trimestres : est-ce vraiment rentable ?</Link>
-            </p>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Comparez avec les autres statuts d&apos;indépendant →{" "}
-              <Link href="/blog/retraite-independant-vs-salarie-comparaison" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Retraite indépendant vs salarié : les chiffres qui font mal</Link>
-            </p>
-          </div>
+          <RelatedArticles currentSlug="retraite-micro-entrepreneur-combien-vais-je-toucher" />
         </div>
 
         {/* Sources */}
@@ -164,21 +160,7 @@ export default function ArticlePage() {
           </p>
         </div>
 
-        {/* CTA Final */}
-        <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
-          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>
-            Calculez votre retraite en 2 minutes
-          </h2>
-          <p style={{ color: "#7A95BB", fontSize: "15px", marginBottom: "28px", lineHeight: 1.6 }}>
-            Diagnostic gratuit et personnalisé selon votre statut et votre situation.
-          </p>
-          <Link
-            href="/diagnostic"
-            style={{ display: "inline-block", background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "16px 40px", borderRadius: "12px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}
-          >
-            Faire mon diagnostic gratuit →
-          </Link>
-        </div>
+        <BlogCTAFinal />
       </article>
 
       {/* Footer */}

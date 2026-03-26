@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid } from "@/components/BlogCTA";
 
 export const metadata: Metadata = {
   title: "Retraite des Français expatriés : récupérer vos droits | Happy Retraite",
@@ -97,6 +99,7 @@ export default function RetraiteExpatries() {
       <h2 className="text-2xl font-bold text-[#0F1F3D] mt-10 mb-4">
         La CFE : le filet de sécurité des expatriés qui cotisent volontairement
       </h2>
+      <BlogCTAMid context="votre situation de retraite" />
       <p className="text-gray-700 mb-4">
         La <strong>Caisse des Français de l'Étranger (CFE)</strong> permet aux Français qui partent à l'étranger hors détachement de continuer à cotiser au régime français de retraite, de façon volontaire. C'est une option, pas une obligation.
       </p>
@@ -219,21 +222,7 @@ export default function RetraiteExpatries() {
         </ol>
       </div>
 
-      {/* Internal links */}
-      <div className="border-t border-gray-100 pt-8 mb-10">
-        <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
-        <div className="flex flex-col gap-2">
-          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
-            Trimestres manquants : toutes les solutions en 2026 →
-          </Link>
-          <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
-            PER : combien verser selon son âge ? →
-          </Link>
-          <Link href="/blog/rachat-trimestres-retraite-rentable" className="text-[#1D9E75] hover:underline text-sm">
-            Rachat de trimestres : est-ce vraiment rentable ? →
-          </Link>
-        </div>
-      </div>
+      <RelatedArticles currentSlug="retraite-francais-expatries" />
 
       {/* Sources */}
       <div className="text-sm text-gray-400 mb-10 space-y-1">
@@ -254,7 +243,7 @@ export default function RetraiteExpatries() {
           Diagnostic gratuit et personnalisé selon votre statut et votre situation.
         </p>
         <Link
-          href="/diagnostic"
+          href="/diagnostic/intro"
           className="inline-block bg-gradient-to-r from-[#10D98A] to-[#2D9CDB] text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition"
         >
           Faire mon diagnostic gratuit →

@@ -169,7 +169,7 @@ function ResultatsContent() {
           <p className="text-gray-500 mb-6">Calcul en cours…</p>
           <p className="text-sm text-gray-400 mb-4">Aucun diagnostic trouvé.</p>
           <Link
-            href="/diagnostic"
+            href="/diagnostic/intro"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold"
             style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)" }}
           >
@@ -195,7 +195,7 @@ function ResultatsContent() {
           <Link href="/" className="text-lg font-bold" style={{ color: "#0F1F3D" }}>
             Happy<span style={{ color: "#1D9E75" }}>Retraite</span>
           </Link>
-          <Link href="/diagnostic" className="text-sm transition-colors" style={{ color: "#6B7A99" }}>
+          <Link href="/diagnostic/intro" className="text-sm transition-colors" style={{ color: "#6B7A99" }}>
             Refaire le diagnostic
           </Link>
         </div>
@@ -620,7 +620,7 @@ function ResultatsContent() {
             Partager mon diagnostic
           </button>
           <Link
-            href="/diagnostic"
+            href="/diagnostic/intro"
             className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm transition-colors"
             style={{ border: "1px solid #E8EDF5", color: "#6B7A99", backgroundColor: "white" }}
           >

@@ -69,7 +69,7 @@ export default function ContactPage() {
               Contact
             </Link>
             <Link
-              href="/diagnostic"
+              href="/diagnostic/intro"
               className="hidden sm:inline-block"
               style={{
                 background: "linear-gradient(to right, #10D98A, #2D9CDB)",

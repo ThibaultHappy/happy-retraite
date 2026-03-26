@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid } from "@/components/BlogCTA";
 
 export const metadata: Metadata = {
   title: "Retraite vétérinaire libéral : CARPV et paradoxe fiscal | Happy Retraite",
@@ -99,6 +101,7 @@ export default function RetraiteVeterinaireCarPV() {
       <h2 className="text-2xl font-bold text-[#0F1F3D] mt-10 mb-4">
         Cotisations CARPV 2026 : combien paie un vétérinaire libéral ?
       </h2>
+      <BlogCTAMid context="votre situation de retraite" />
       <p className="text-gray-700 mb-4">
         Les cotisations CARPV sont calculées sur les bénéfices non commerciaux (BNC) déclarés. Elles se décomposent en une part forfaitaire et une part proportionnelle aux revenus, dans la limite du plafond.
       </p>
@@ -261,21 +264,7 @@ export default function RetraiteVeterinaireCarPV() {
         </ol>
       </div>
 
-      {/* Internal links */}
-      <div className="border-t border-gray-100 pt-8 mb-10">
-        <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
-        <div className="flex flex-col gap-2">
-          <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
-            PER : combien verser selon son âge ? →
-          </Link>
-          <Link href="/blog/retraite-micro-entrepreneur-combien-vais-je-toucher" className="text-[#1D9E75] hover:underline text-sm">
-            Retraite micro-entrepreneur : combien vais-je vraiment toucher ? →
-          </Link>
-          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
-            Trimestres manquants : toutes les solutions en 2026 →
-          </Link>
-        </div>
-      </div>
+      <RelatedArticles currentSlug="retraite-veterinaire-carpv" />
 
       {/* Sources */}
       <div className="text-sm text-gray-400 mb-10 space-y-1">
@@ -296,7 +285,7 @@ export default function RetraiteVeterinaireCarPV() {
           Diagnostic gratuit et personnalisé selon votre statut et votre situation.
         </p>
         <Link
-          href="/diagnostic"
+          href="/diagnostic/intro"
           className="inline-block bg-gradient-to-r from-[#10D98A] to-[#2D9CDB] text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition"
         >
           Faire mon diagnostic gratuit →

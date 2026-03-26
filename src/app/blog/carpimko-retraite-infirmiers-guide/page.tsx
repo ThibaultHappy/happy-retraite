@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid, BlogCTAFinal } from "@/components/BlogCTA";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
@@ -57,7 +59,7 @@ export default function ArticlePage() {
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <Link href="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Blog</Link>
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Contact</Link>
-            <Link href="/diagnostic" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
+            <Link href="/diagnostic/intro" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
               Commencer gratuitement
             </Link>
           </div>
@@ -98,6 +100,7 @@ export default function ArticlePage() {
           </InfoBox>
 
           <H2>Qui cotise à la CARPIMKO ?</H2>
+          <BlogCTAMid context="votre situation de retraite" />
           <P>Sont obligatoirement affiliés : Infirmiers libéraux conventionnés — Masseurs-kinésithérapeutes libéraux — Pédicures-podologues libéraux — Orthophonistes libéraux — Orthoptistes libéraux.</P>
           <P>L&apos;affiliation est automatique dès la première installation en libéral conventionné. Pas de démarche à effectuer — mais vérifiez tout de même que votre compte est bien créé sur carpimko.com.</P>
 
@@ -133,14 +136,7 @@ export default function ArticlePage() {
             <p style={{ margin: 0, lineHeight: 1.8 }}>Action prioritaire : connectez-vous sur info-retraite.fr et vérifiez que toutes vos années en libéral sont bien enregistrées. Contactez la CARPIMKO si des anomalies apparaissent (carpimko.com, 01 40 68 32 00).</p>
           </GreenBox>
 
-          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Préparer sa retraite avec un PER →{" "}
-              <Link href="/blog/per-combien-verser-selon-age" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>PER : combien verser selon son âge ?</Link>
-            </p>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Rachat de trimestres pour vos années d&apos;IFSI →{" "}
-              <Link href="/blog/rachat-trimestres-retraite-rentable" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Rachat de trimestres : est-ce vraiment rentable ?</Link>
-            </p>
-          </div>
+          <RelatedArticles currentSlug="carpimko-retraite-infirmiers-guide" />
         </div>
 
         {/* Sources */}
@@ -156,21 +152,7 @@ export default function ArticlePage() {
           </p>
         </div>
 
-        {/* CTA Final */}
-        <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
-          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>
-            Calculez votre retraite en 2 minutes
-          </h2>
-          <p style={{ color: "#7A95BB", fontSize: "15px", marginBottom: "28px", lineHeight: 1.6 }}>
-            Diagnostic gratuit et personnalisé selon votre statut et votre situation.
-          </p>
-          <Link
-            href="/diagnostic"
-            style={{ display: "inline-block", background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "16px 40px", borderRadius: "12px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}
-          >
-            Faire mon diagnostic gratuit →
-          </Link>
-        </div>
+        <BlogCTAFinal />
       </article>
 
       {/* Footer */}

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid } from "@/components/BlogCTA";
 
 export const metadata: Metadata = {
   title: "Retraite après travail en Suisse : AVS, LPP et droits français | Happy Retraite",
@@ -96,6 +98,7 @@ export default function RetraiteTravailSuisse() {
       <h2 className="text-2xl font-bold text-[#0F1F3D] mt-10 mb-4">
         Le 1er pilier (AVS) : ce que vous récupérez à la retraite
       </h2>
+      <BlogCTAMid context="votre situation de retraite" />
       <p className="text-gray-700 mb-4">
         L'AVS est le régime de retraite de base suisse. En tant que travailleur en Suisse, vous cotisez à l'AVS sur l'intégralité de votre salaire, sans plafond. L'accord bilatéral <strong>France-Suisse sur la sécurité sociale</strong> permet de totaliser les périodes cotisées dans les deux pays pour l'ouverture des droits.
       </p>
@@ -217,21 +220,7 @@ export default function RetraiteTravailSuisse() {
         </ol>
       </div>
 
-      {/* Internal links */}
-      <div className="border-t border-gray-100 pt-8 mb-10">
-        <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
-        <div className="flex flex-col gap-2">
-          <Link href="/blog/retraite-francais-expatries" className="text-[#1D9E75] hover:underline text-sm">
-            Retraite des Français expatriés : comment récupérer vos droits →
-          </Link>
-          <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
-            PER : combien verser selon son âge ? →
-          </Link>
-          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
-            Trimestres manquants : toutes les solutions en 2026 →
-          </Link>
-        </div>
-      </div>
+      <RelatedArticles currentSlug="retraite-travail-suisse" />
 
       {/* Sources */}
       <div className="text-sm text-gray-400 mb-10 space-y-1">
@@ -253,7 +242,7 @@ export default function RetraiteTravailSuisse() {
           Diagnostic gratuit et personnalisé selon votre statut et votre situation.
         </p>
         <Link
-          href="/diagnostic"
+          href="/diagnostic/intro"
           className="inline-block bg-gradient-to-r from-[#10D98A] to-[#2D9CDB] text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition"
         >
           Faire mon diagnostic gratuit →

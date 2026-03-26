@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid, BlogCTAFinal } from "@/components/BlogCTA";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
@@ -57,7 +59,7 @@ export default function ArticlePage() {
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <Link href="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Blog</Link>
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Contact</Link>
-            <Link href="/diagnostic" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
+            <Link href="/diagnostic/intro" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
               Commencer gratuitement
             </Link>
           </div>
@@ -97,6 +99,7 @@ export default function ArticlePage() {
           </InfoBox>
 
           <H2>Le problème fondamental : les dividendes ne cotisent pas</H2>
+          <BlogCTAMid context="votre situation de retraite" />
           <P>Voici le calcul que beaucoup évitent. Imaginons Alice, présidente de SASU avec un CA de 150 000€ et des charges de 30 000€. Bénéfice : 120 000€. Elle décide de se verser 20 000€ de salaire et 80 000€ de dividendes (après IS à 15%). Ses droits retraite sont calculés sur... 20 000€.</P>
           <H3>Ce que ça donne concrètement</H3>
           <P>Salaire annuel : 20 000€. Trimestres validés : 4 (seuil dépassé). Revenus pris en compte pour le SAM : 20 000€/an. Après 30 ans de carrière à ce niveau : pension de base ≈ 500€/mois, complémentaire AGIRC-ARRCO ≈ 200€/mois. Total : ~700€/mois. Pendant ce temps, Alice a prélevé en moyenne 80 000€/an de dividendes pendant 30 ans. Elle a &quot;gagné&quot; 80 000€ de liquidité annuelle — mais construit une retraite de misère.</P>
@@ -127,14 +130,7 @@ export default function ArticlePage() {
             <p style={{ margin: 0, lineHeight: 1.8 }}>Si votre expert-comptable ne peut pas répondre précisément à ces questions, complétez avec un conseiller en gestion de patrimoine (CGP) spécialisé en indépendants.</p>
           </InfoBox>
 
-          <div style={{ marginTop: "40px", padding: "20px", backgroundColor: "white", border: "1px solid #E8EDF5", borderRadius: "12px", display: "flex", flexDirection: "column" as const, gap: "12px" }}>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Comparez avec l&apos;EURL →{" "}
-              <Link href="/blog/retraite-eurl-optimiser-cotisations" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>Retraite en EURL : comment optimiser ses cotisations</Link>
-            </p>
-            <p style={{ margin: 0, lineHeight: 1.8 }}>Calculez combien verser sur un PER →{" "}
-              <Link href="/blog/per-combien-verser-selon-age" style={{ color: "#1D9E75", textDecoration: "none", fontWeight: 600 }}>PER : combien verser selon son âge ?</Link>
-            </p>
-          </div>
+          <RelatedArticles currentSlug="sasu-retraite-calcul" />
         </div>
 
         {/* Sources */}
@@ -150,21 +146,7 @@ export default function ArticlePage() {
           </p>
         </div>
 
-        {/* CTA Final */}
-        <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
-          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>
-            Calculez votre retraite en 2 minutes
-          </h2>
-          <p style={{ color: "#7A95BB", fontSize: "15px", marginBottom: "28px", lineHeight: 1.6 }}>
-            Diagnostic gratuit et personnalisé selon votre statut et votre situation.
-          </p>
-          <Link
-            href="/diagnostic"
-            style={{ display: "inline-block", background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "16px 40px", borderRadius: "12px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}
-          >
-            Faire mon diagnostic gratuit →
-          </Link>
-        </div>
+        <BlogCTAFinal />
       </article>
 
       {/* Footer */}

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid } from "@/components/BlogCTA";
 
 export const metadata: Metadata = {
   title: "Retraite enseignants privé sous contrat : IRCANTEC expliqué | Happy Retraite",
@@ -73,6 +75,7 @@ export default function RetraiteEnseignantsPriveContrat() {
       <h2 className="text-2xl font-bold text-[#0F1F3D] mt-10 mb-4">
         L'IRCANTEC : le régime complémentaire méconnu
       </h2>
+      <BlogCTAMid context="votre situation de retraite" />
       <p className="text-gray-700 mb-4">
         L'<strong>IRCANTEC</strong> (Institution de Retraite Complémentaire des Agents Non Titulaires de l'État et des Collectivités) est le régime complémentaire des agents publics non titulaires. Il regroupe environ <strong>5 millions de cotisants</strong> — enseignants du privé, contractuels de la fonction publique, élus locaux, etc.
       </p>
@@ -234,21 +237,7 @@ export default function RetraiteEnseignantsPriveContrat() {
         </ol>
       </div>
 
-      {/* Internal links */}
-      <div className="border-t border-gray-100 pt-8 mb-10">
-        <p className="text-sm text-gray-500 mb-3">Articles liés :</p>
-        <div className="flex flex-col gap-2">
-          <Link href="/blog/fonctionnaire-retraite-progressive" className="text-[#1D9E75] hover:underline text-sm">
-            Retraite progressive pour les fonctionnaires : mode d'emploi →
-          </Link>
-          <Link href="/blog/per-combien-verser-selon-age" className="text-[#1D9E75] hover:underline text-sm">
-            PER : combien verser selon son âge ? →
-          </Link>
-          <Link href="/blog/trimestres-manquants-comment-les-recuperer" className="text-[#1D9E75] hover:underline text-sm">
-            Trimestres manquants : toutes les solutions en 2026 →
-          </Link>
-        </div>
-      </div>
+      <RelatedArticles currentSlug="retraite-enseignants-prive-contrat-ircantec" />
 
       {/* Sources */}
       <div className="text-sm text-gray-400 mb-10 space-y-1">
@@ -269,7 +258,7 @@ export default function RetraiteEnseignantsPriveContrat() {
           Diagnostic gratuit et personnalisé selon votre statut et votre situation.
         </p>
         <Link
-          href="/diagnostic"
+          href="/diagnostic/intro"
           className="inline-block bg-gradient-to-r from-[#10D98A] to-[#2D9CDB] text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition"
         >
           Faire mon diagnostic gratuit →

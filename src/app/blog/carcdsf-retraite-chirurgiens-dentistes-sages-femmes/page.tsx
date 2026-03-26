@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleJsonLd } from "@/components/JsonLd";
+import RelatedArticles from "@/components/RelatedArticles";
+import { BlogCTAMid, BlogCTAFinal } from "@/components/BlogCTA";
 
 const PLAYFAIR = "'Playfair Display', Georgia, serif";
 const DM = "'DM Sans', sans-serif";
@@ -69,7 +71,7 @@ export default function ArticlePage() {
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <Link href="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Blog</Link>
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px", textDecoration: "none" }}>Contact</Link>
-            <Link href="/diagnostic" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
+            <Link href="/diagnostic/intro" className="hidden sm:inline-block" style={{ background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "10px 22px", borderRadius: "999px", fontSize: "14px", fontWeight: 500, textDecoration: "none" }}>
               Commencer gratuitement
             </Link>
           </div>
@@ -113,6 +115,7 @@ export default function ArticlePage() {
           </InfoBox>
 
           <H2>Structure complète de la retraite CARCDSF</H2>
+          <BlogCTAMid context="votre situation de retraite" />
 
           <H3>Retraite de base — CNAVPL</H3>
           <P>
@@ -257,37 +260,9 @@ export default function ArticlePage() {
           </p>
         </div>
 
-        {/* Liens internes */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "40px 0" }}>
-          <div style={{ backgroundColor: "#F7F9FC", border: "1px solid #E8EDF5", borderRadius: "12px", padding: "16px 20px", fontSize: "14px", color: "#374151" }}>
-            Infirmier, kiné, orthophoniste ou orthoptiste ?{" "}
-            <Link href="/blog/carpimko-retraite-infirmiers-guide" style={{ color: "#1D9E75", fontWeight: 600, textDecoration: "none" }}>
-              Guide CARPIMKO complet →
-            </Link>
-          </div>
-          <div style={{ backgroundColor: "#F7F9FC", border: "1px solid #E8EDF5", borderRadius: "12px", padding: "16px 20px", fontSize: "14px", color: "#374151" }}>
-            Médecin libéral ?{" "}
-            <Link href="/blog/carmf-retraite-medecins-liberaux-guide" style={{ color: "#1D9E75", fontWeight: 600, textDecoration: "none" }}>
-              Guide CARMF complet →
-            </Link>
-          </div>
-        </div>
+        <RelatedArticles currentSlug="carcdsf-retraite-chirurgiens-dentistes-sages-femmes" />
 
-        {/* CTA Final */}
-        <div style={{ backgroundColor: "#0F1F3D", borderRadius: "16px", padding: "40px", textAlign: "center", marginTop: "64px" }}>
-          <h2 style={{ fontFamily: PLAYFAIR, fontSize: "28px", fontWeight: 700, color: "white", marginBottom: "12px" }}>
-            Estimez votre retraite CARCDSF en 2 minutes
-          </h2>
-          <p style={{ color: "#7A95BB", fontSize: "15px", marginBottom: "28px", lineHeight: 1.6 }}>
-            Diagnostic gratuit et personnalisé — pension estimée, écart par rapport à votre objectif, leviers d'optimisation.
-          </p>
-          <Link
-            href="/diagnostic"
-            style={{ display: "inline-block", background: "linear-gradient(to right, #10D98A, #2D9CDB)", color: "white", padding: "16px 40px", borderRadius: "12px", fontSize: "16px", fontWeight: 600, textDecoration: "none" }}
-          >
-            Faire mon diagnostic gratuit →
-          </Link>
-        </div>
+        <BlogCTAFinal />
       </article>
 
       {/* Footer */}

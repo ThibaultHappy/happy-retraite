@@ -15,7 +15,15 @@
       "Bash(npm list:*)",
       "Bash(which vercel:*)",
       "Bash(/Users/macprodethibault/.npm-global/bin/vercel deploy:*)",
-      "Bash(sleep:*)"
+      "Bash(sleep:*)",
+      "Bash(find:*)",
+      "Bash(~/.npm-global/bin/vercel deploy:*)",
+      "Bash(ls:*)",
+      "Bash(~/.npm-global/bin/vercel --prod 2>&1)",
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)",
+      "Bash(cd:*)",
+      "Bash(whois:*)"
     ]
   }
 }
